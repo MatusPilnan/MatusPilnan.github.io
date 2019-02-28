@@ -1,3 +1,8 @@
 name: Matúš Pilňan, nádejný informatik
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
+collections:
+  zadania:
+    output: true
+    permalink: /wpub/zadania/:name
+
