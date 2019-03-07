@@ -5,4 +5,5 @@ collections:
   zadania:
     output: true
     permalink: /wpub/zadania/:name
+  zaujmy:
 

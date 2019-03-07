@@ -1,0 +1,16 @@
+---
+layout: default
+title: Moje projekty
+---
+<h1>{{page.title}}</h1>
+<ul class="zadania">
+
+    {% assign zadania_zoradene = site.zadania | sort_natural %}
+    {% for zadanie in zadania_zoradene %}
+    <li>
+        <a href="{{ zadanie.url }}" title="{{ zadanie.title }}">
+            <b>{{zadanie.typ}} {{ zadanie.cislo }}:</b> {{ zadanie.title }}
+        </a>
+    </li>
+    {% endfor %}
+</ul>
