@@ -1,6 +1,8 @@
 name: Matúš Pilňan, nádejný informatik
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title
+plugins:
+  - jekyll-timeago
 collections:
   zadania:
     output: true
