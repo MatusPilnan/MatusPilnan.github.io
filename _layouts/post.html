@@ -4,15 +4,15 @@ layout: default
 <h1>{{ page.title }}</h1>
 <p class="meta">Pridané: {{ page.date | date_to_string }} <i class="text-black-50">({{page.date | timeago}})</i> </p>
 
-<div class="post">
+<div class="post border-top py-4">
   {{ content }}
 </div>
 {% if page.obrazky.size > 0 %}
 <h2>Galéria k príspevku</h2>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
+  <div class="carousel-inner bg-secondary">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="{{page.obrazky | sample}}" alt="Prvý obrázok">
+      <img class="d-block w-100" src="{{page.obrazky | sample}}" alt="Prvý obrázok" style="height: 640px; object-fit: contain">
     </div>
     {% for obrazok in page.obrazky %}
     <div class="carousel-item" >

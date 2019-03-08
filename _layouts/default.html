@@ -38,17 +38,18 @@
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item {% if page.url == '/'%}active{% endif %}"><a class="nav-link" href="/">Domov</a></li>
 				<li class="nav-item {% if page.url == '/about/'%}active{% endif %}"><a class="nav-link" href="/about">O mne</a></li>
-				<li class="nav-item {% if page.url == '/wpub/'%}active{% endif %}"><a class="nav-link" href="/wpub">Webové publikovanie</a></li>
+				<li class="nav-item {% if page.url == '/wpub/'%}active{% endif %}"><a class="nav-link" href="/wpub">Webové
+						publikovanie</a></li>
 				<li class="nav-item {% if page.url == '/blog/'%}active{% endif %}"><a class="nav-link" href="/blog">Blog</a></li>
 			</ul>
 		</div>
 	</nav>
-	<div class="container mt-4">
+	<div class="container mt-4 mb-4">
 
 		{{ content }}
 
 	</div><!-- /.container -->
-	<footer class="page-footer font-small blue position-absolute w-100 bg-secondary" style="bottom: 0px;">
+	<footer class="page-footer font-small blue position-fixed w-100 bg-secondary" style="bottom: 0px;">
 		<div class="text-center text-white-50">
 			<a class="text-white-50" href="https://github.com/matuspilnan">Môj GitHub</a>
 		</div>
