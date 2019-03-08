@@ -24,7 +24,8 @@ V projekte sú použité nasledujúce premenné:
   - ```predmet``` - študijný predmet, na ktorý bolo dané zadanie vypracované, predovšetkým používané na filtrovanie zadaní z WPUB,  
   - ```github_url``` - link na GitHub repozitár prislúchajúci danému projektu.
 - V záujmoch:
-  - ```obrazok``` - umiestnenie obrázku, ktorý sa má zobraziť na kartičke v zozname záujmov.
+  - ```obrazok``` - umiestnenie obrázku, ktorý sa má zobraziť na kartičke v zozname záujmov,
+  - ```popis``` - krátky popis ktorý sa zobrazí na stránke so záujmami.
 - V blogových príspevkoch:
   - ```date``` - dátum pridania príspevku,
   - ```obrazky``` - pole umiestnení obrázkov, ktoré sa majú zobraziť v galérii.
@@ -44,7 +45,8 @@ V projekte sú použité nasledujúce filtre a tagy:
 - ```timeago``` v rozložení ```post``` na slovné vypísanie toho, ako dávno bol príspevok pridaný (plugin [jekyll-timeago](https://github.com/markets/jekyll-timeago)),
 - ```assign``` na vytvorenie dočasných zoznamov v stránkach [WPUB](/wpub) a [Projekty](/projects),
 - ```where``` na vyfiltrovanie zadaní, ktoré majú premennú ```predmet``` nastavenú na hodnotu ```wpub``` pri zobrazovaní zadaní v sekcii [Webové publikovanie](/wpub)
-- ```sort_natural``` na zoradenie zadaní podľa abecedy.
+- ```sort_natural``` na zoradenie zadaní podľa abecedy,
+- ```increment``` na zvyšovanie počítadla ID-čok HTML elementov ktoré sa majú schovávať na stránke [Záujmy](/aboutt/hobbies.html).
 
 ## Plugin
 V projekte je použítý plugin [jekyll-timeago](https://github.com/markets/jekyll-timeago) na slovný výpis veku jednotlivých príspevkov na blogu.
