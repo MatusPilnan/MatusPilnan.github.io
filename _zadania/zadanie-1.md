@@ -31,7 +31,7 @@ V projekte sú použité nasledujúce premenné:
   - ```obrazky``` - pole umiestnení obrázkov, ktoré sa majú zobraziť v galérii.
 
 ## Kolekcie
-V projekte sú okrem základnej kolekcie blogových príspevkov ```posts``` použité dve vlastné kolekcie. Kolekcia ```zadania``` na zadania a projekty a kolekcia ```zaujmy``` na osobné záujmy.
+V projekte sú okrem základnej kolekcie blogových príspevkov ```posts``` použité dve vlastné kolekcie. Kolekcia ```zadania``` na zadania a projekty a kolekcia ```zaujmy``` na osobné záujmy. Z kolekcie ```zaujmy``` sa negenerujú samostatné stránky, obsah všetkých Markdown súborov sa vloží do stránky [Záujmy](/about/hobbies.html).
 
 ## Filtre a tagy
 V projekte sú použité nasledujúce filtre a tagy:
@@ -45,7 +45,7 @@ V projekte sú použité nasledujúce filtre a tagy:
 - ```timeago``` v rozložení ```post``` na slovné vypísanie toho, ako dávno bol príspevok pridaný (plugin [jekyll-timeago](https://github.com/markets/jekyll-timeago)),
 - ```assign``` na vytvorenie dočasných zoznamov v stránkach [WPUB](/wpub) a [Projekty](/projects),
 - ```where``` na vyfiltrovanie zadaní, ktoré majú premennú ```predmet``` nastavenú na hodnotu ```wpub``` pri zobrazovaní zadaní v sekcii [Webové publikovanie](/wpub)
-- ```sort_natural``` na zoradenie zadaní podľa abecedy,
+- ```sort_natural``` a ```sort``` na zoradenie zadaní podľa abecedy,
 - ```increment``` na zvyšovanie počítadla ID-čok HTML elementov ktoré sa majú schovávať na stránke [Záujmy](/aboutt/hobbies.html).
 
 ## Plugin
