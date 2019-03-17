@@ -5,7 +5,7 @@ title: Playlist Bárjaké reďkovky
 # Bárjaké reďkovky
 
 
-Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa Sat Mar 16 11:30:46 2019:  
+Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa Sun Mar 17 11:30:46 2019:  
 
 *Nultý (000) sondžik je ako vždy Bon Jovi - You Give Love a Bad Name*  
 1. **Good Charlotte** - The Anthem
@@ -81,6 +81,6 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa Sat Mar 16 11:30:46
 71. **The Lonely Island** - I Run NY (feat. Billie Joe Armstrong)
 72. **The Rumjacks** - Uncle Tommy
 73. **The Rasmus** - In The Shadows
-
+74. **The White Stripes** - Seven Nation Army
 
 Použitý seed: ```2484703683917841283```
