@@ -82,6 +82,8 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa Sun Mar 17 11:30:46
 72. **The Rumjacks** - Uncle Tommy
 73. **The Rasmus** - In The Shadows
 74. **The White Stripes** - Seven Nation Army
-75. **Tha All-American Rejects** - Gives You Hell
+75. **The All-American Rejects** - Gives You Hell
+76. **Masked Intruder** - Unrequited Love
+77. **Zoči Voči** - Stratený
 
 Použitý seed: ```2484703683917841283```
