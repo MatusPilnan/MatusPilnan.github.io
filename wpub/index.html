@@ -6,7 +6,7 @@ title: Webové publikovanie
 <ul class="zadania">
 
     {% assign wpub  = site.zadania | where:"predmet","wpub" %}
-    {% assign zadania_zoradene = wpub | sort_natural %}
+    {% assign zadania_zoradene = wpub | sort %}
     {% for zadanie in zadania_zoradene %}
     <li>
         <a href="{{ zadanie.url }}" title="{{ zadanie.title }}">
