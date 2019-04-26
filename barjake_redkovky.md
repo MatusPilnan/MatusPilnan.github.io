@@ -85,5 +85,7 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa Sun Mar 17 11:30:46
 75. **The All-American Rejects** - Gives You Hell
 76. **Masked Intruder** - Unrequited Love
 77. **Zoči Voči** - Stratený
+78. **Men at Work** - Down Under
+79. **Oasis** - Wonderwall
 
 Použitý seed: ```2484703683917841283```
