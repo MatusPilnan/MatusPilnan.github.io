@@ -90,5 +90,5 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa Sun Mar 17 11:30:46
 80. **Holly Would Surrender** - Boom Boom Boom Boom
 81. **Punkreas** - Bella Ciao
 82. **Vypsaná fiXa** - Siky Romero
-83. **Catastrofy - Ja som spokojný**
-84. **The Rumjacks - The Pot & Kettle**
+83. **Catastrofy** - Ja som spokojný
+84. **The Rumjacks** - The Pot & Kettle
