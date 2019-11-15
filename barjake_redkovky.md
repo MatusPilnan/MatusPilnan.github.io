@@ -94,6 +94,7 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa Mon Nov 11 23:20:46
 84. **The Rumjacks** - One Summers Day
 85. **Billy Idol** - Dancing With Myself
 86. **Oasis** - Wonderwall
+87. **Desmod** - Na tebe závislý
 
 
 Použitý seed: ```8377256417746780672```
