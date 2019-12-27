@@ -11,18 +11,60 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
-	 crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
+	{% if page.datatable %}
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+	{% endif %}
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	 crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-	 crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-	 crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+
+	{% if page.datatable %}
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#table_id').DataTable({
+				"paging": false,
+				"language": {
+					"sEmptyTable": "Nie sú k dispozícii žiadne dáta",
+					"sInfo": "Záznamy _START_ až _END_ z celkom _TOTAL_",
+					"sInfoEmpty": "Záznamy 0 až 0 z celkom 0 ",
+					"sInfoFiltered": "(vyfiltrované spomedzi _MAX_ záznamov)",
+					"sInfoPostFix": "",
+					"sInfoThousands": ",",
+					"sLengthMenu": "Zobraz _MENU_ záznamov",
+					"sLoadingRecords": "Načítavam...",
+					"sProcessing": "Spracúvam...",
+					"sSearch": "Hľadať:",
+					"sZeroRecords": "Nenašli sa žiadne vyhovujúce záznamy",
+					"oPaginate": {
+						"sFirst": "Prvá",
+						"sLast": "Posledná",
+						"sNext": "Nasledujúca",
+						"sPrevious": "Predchádzajúca"
+					},
+					"oAria": {
+						"sSortAscending": ": aktivujte na zoradenie stĺpca vzostupne",
+						"sSortDescending": ": aktivujte na zoradenie stĺpca zostupne"
+					}
+				}
+			});
+		});
+	</script>
+	{% endif %}
+
 
 	<script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
@@ -31,16 +73,20 @@
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 		<a class="navbar-brand" href="/">Matúš Pilňan</a>
 		<button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
-		 aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+			aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavId">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item {% if page.url == '/'%}active{% endif %}"><a class="nav-link" href="/">Domov</a></li>
-				<li class="nav-item {% if page.url == '/about/'%}active{% endif %}"><a class="nav-link" href="/about">O mne</a></li>
-				<li class="nav-item {% if page.url == '/wpub/'%}active{% endif %}"><a class="nav-link" href="/wpub">Webové
+				<li class="nav-item {% if page.url == '/'%}active{% endif %}"><a class="nav-link" href="/">Domov</a>
+				</li>
+				<li class="nav-item {% if page.url == '/about/'%}active{% endif %}"><a class="nav-link" href="/about">O
+						mne</a></li>
+				<li class="nav-item {% if page.url == '/wpub/'%}active{% endif %}"><a class="nav-link"
+						href="/wpub">Webové
 						publikovanie</a></li>
-				<li class="nav-item {% if page.url == '/blog/'%}active{% endif %}"><a class="nav-link" href="/blog">Blog</a></li>
+				<li class="nav-item {% if page.url == '/blog/'%}active{% endif %}"><a class="nav-link"
+						href="/blog">Blog</a></li>
 			</ul>
 		</div>
 	</nav>
