@@ -1,7 +1,7 @@
 ---
 layout: tab
 title: HEX - Čo mám na to povedať (intro, basa)
-video: kuVt4A9w0lk
+youtube_video_id: kuVt4A9w0lk
 tags: [Taby, Hex]
 ---
 S pomocou [tohoto šikovného nástroja](https://www.lunaverus.com/) som otaboval intro k pesničke *Čo mám na to povedať* od Hexu.
