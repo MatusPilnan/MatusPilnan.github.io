@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Matúš Pilňan, nádejný informatik, vytvoril stránku"
+metaimage: /assets/img/barjake_redkovky.jpg
 date: 2019-02-21
 ---
 No presne to sa stalo...
