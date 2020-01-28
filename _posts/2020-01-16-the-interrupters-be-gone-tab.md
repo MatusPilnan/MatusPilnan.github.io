@@ -2,6 +2,7 @@
 layout: tab
 title: The Interrupters - Be Gone (intro, basa)
 youtube_video_id: 4DA-RYk4cYk
+metaimage: https://www.discogs.com/The-Interrupters-Fight-The-Good-Fight/master/1382608#images/34850738
 tags: [Taby, The Interrupters]
 ---
 Intro k pesničke *Be Gone* od The Interrupters.

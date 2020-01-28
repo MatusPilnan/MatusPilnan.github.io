@@ -2,6 +2,7 @@
 layout: tab
 title: Iné Kafe - Vodič MHD (intro)
 youtube_video_id: lZlOfyXI9ME
+metaimage: https://www.discogs.com/In%C3%A9-Ka%D1%84e-Situ%C3%A1cia-Kachny/release/4262005#images/9918192
 tags: [Taby, Iné Kafe]
 ---
 Intro k pesničke *Vodič MHD* od Iné Kafe.

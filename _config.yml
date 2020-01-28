@@ -9,3 +9,4 @@ collections:
     permalink: /wpub/zadania/:name
   zaujmy:
 highliter: rouge
+metaimage_default: /assets/img/mtb.jpg

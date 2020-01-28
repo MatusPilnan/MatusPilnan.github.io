@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Playlist Bárjaké reďkovky
+excerpt: Jeden jediný playlist na celom svete, ktorý obsahuje všetko dôležité. Iné sú zbytočné.
+metaimage: /assets/img/barjake_redkovky.jpg
 datatable: true
 ---
 # Bárjaké reďkovky

@@ -2,7 +2,26 @@
 <html>
 
 <head>
-	<title>{{ page.title }}</title>
+	<!-- Primary Meta Tags -->
+	<title>{{page.title}}</title>
+	<meta name="title" content="{{page.title}}">
+	<meta name="description" content="{{page.excerpt | strip_html | default: "K tomuto prosto niet čo dodať..."}}">
+
+	<!-- Open Graph / Facebook -->
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://matuspilnan.github.io/">
+	<meta property="og:title" content="{{page.title}}">
+	<meta property="og:description" content="{{page.excerpt | strip_html | default: "K tomuto prosto niet čo dodať..."}}">
+	<meta property="og:image"
+		content="{{page.metaimage | default: site.metaimage_default}}">
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://matuspilnan.github.io/">
+	<meta property="twitter:title" content="{{page.title}}">
+	<meta property="twitter:description" content="{{page.excerpt | strip_html | default: "K tomuto prosto niet čo dodať..."}}">
+	<meta property="twitter:image"
+		content="{{page.metaimage | default: site.metaimage_default}}">
 	<!-- link to main stylesheet -->
 	<link rel="stylesheet" type="text/css" href="/assets/css/main.css">
 	<!-- Place this tag in your head or just before your close body tag. -->
