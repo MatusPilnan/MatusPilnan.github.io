@@ -6,7 +6,7 @@ metaimage: /assets/img/barjake_redkovky.jpg
 datatable: true
 ---
 # Bárjaké reďkovky
-Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa Fri Dec 27 21:57:22 2019:  
+Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 1.2.2020:  
 
 *Nultý (000) sondžik je ako vždy Bon Jovi - You Give Love a Bad Name*  
 
@@ -103,7 +103,9 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa Fri Dec 27 21:57:22
 |87|**Foster The People**|Pumped up Kicks  
 |88|**Blur**|Song 2  
 |89|**The All-American Rejects**|Gives You Hell  
-|90|**Zoči Voči**|Čerešne  
+|90|**Zoči Voči**|Čerešne
+|91|**Korpiklaani**|Levan Polka
+|92|**Turisas**|Rasputin
 
 
 
