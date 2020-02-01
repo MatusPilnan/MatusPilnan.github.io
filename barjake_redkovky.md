@@ -103,9 +103,9 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 1.2.2020:
 |87|**Foster The People**|Pumped up Kicks  
 |88|**Blur**|Song 2  
 |89|**The All-American Rejects**|Gives You Hell  
-|90|**Zoči Voči**|Čerešne
-|91|**Korpiklaani**|Levan Polka
-|92|**Turisas**|Rasputin
+|90|**Zoči Voči**|Čerešne  
+|91|**Korpiklaani**|Levan Polka  
+|92|**Turisas**|Rasputin  
 
 
 
