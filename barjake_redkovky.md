@@ -107,6 +107,7 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 1.2.2020:
 |91|**Korpiklaani**|Levan Polka  
 |92|**Turisas**|Rasputin  
 |93|**Penelope Houston**|Angel and the Jerk (feat. Billie Joe Armstrong)  
+|94|**Gwen Stefani**|Hollaback Girl  
 
 
 
