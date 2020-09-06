@@ -110,7 +110,5 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 1.2.2020:
 |94|**Gwen Stefani**|Hollaback Girl  
 |95|**Kenny Loggins**|Danger Zone  
 |96|**Spice Girls**|Wannabe  
+|97|**Bloodhound Gang**|Foxtrot Uniform Charlie Kilo
 
-
-
-Použitý seed: ```1908724629359418626```
