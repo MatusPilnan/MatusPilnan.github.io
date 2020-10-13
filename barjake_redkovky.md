@@ -116,7 +116,7 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 1.2.2020:
 |100|**I Want It That Way**|Backstreet Boys
 |101|**Where You Lead**|Carole King
 |102|**Kokomo**|The Beach Boys
-
+|103|**Single Ladies**|Beyoncé
 
 
 
