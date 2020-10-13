@@ -112,11 +112,11 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 1.2.2020:
 |96|**Spice Girls**|Wannabe  
 |97|**Bloodhound Gang**|Foxtrot Uniform Charlie Kilo
 |98|**The Toy Dolls**|Nellie The Elephant
-|99|**Shut Up**|The Black Eyed Peas
-|100|**I Want It That Way**|Backstreet Boys
-|101|**Where You Lead**|Carole King
-|102|**Kokomo**|The Beach Boys
-|103|**Single Ladies**|Beyoncé
+|99|**The Black Eyed Peas**|Shut Up
+|100|**Backstreet Boys**|I Want It That Way
+|101|**Carole King**|Where You Lead
+|102|**The Beach Boys**|Kokomo
+|103|**Beyoncé**|Single Ladies
 
 
 
