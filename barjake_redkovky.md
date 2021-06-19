@@ -110,7 +110,14 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 1.2.2020:
 |94|**Gwen Stefani**|Hollaback Girl  
 |95|**Kenny Loggins**|Danger Zone  
 |96|**Spice Girls**|Wannabe  
+|97|**Bloodhound Gang**|Foxtrot Uniform Charlie Kilo
+|98|**The Toy Dolls**|Nellie The Elephant
+|99|**The Black Eyed Peas**|Shut Up
+|100|**Backstreet Boys**|I Want It That Way
+|101|**Carole King**|Where You Lead
+|102|**The Beach Boys**|Kokomo
+|103|**Beyoncé**|Single Ladies
+|104|**The Clash**|Should I Stay Or Should I Go
+|105|**Simple Plan**|Welcome to My Life
+|106|**The Go Go's**|Vacation
 
-
-
-Použitý seed: ```1908724629359418626```
