@@ -6,7 +6,7 @@ metaimage: /assets/img/barjake_redkovky.jpg
 datatable: true
 ---
 # Bárjaké reďkovky
-Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 1.2.2020:  
+Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 2.7.2022:  
 
 *Nultý (000) sondžik je ako vždy Bon Jovi - You Give Love a Bad Name*  
 
@@ -120,4 +120,4 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 1.2.2020:
 |104|**The Clash**|Should I Stay Or Should I Go
 |105|**Simple Plan**|Welcome to My Life
 |106|**The Go Go's**|Vacation
-
+|107|**Rammstein**|Dicke Titten
