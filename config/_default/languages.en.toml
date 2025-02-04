@@ -1,0 +1,18 @@
+disabled = false
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "Matúš Pilňan"
+
+[params]
+displayName = "EN"
+isoCode = "en"
+rtl = false
+dateFormat = "2 January 2006"
+
+[params.author]
+image = "MatusPilnan.jpg"
+headline = "Punkrock. Pivo. Príroda. Nie nutne v tomto poradí."
+name = "Ing. Matúš Pilňan"
+bio = "Vadúcko"
+links = []
