@@ -13,7 +13,7 @@ defaultBackgroundImage = "/img/background.svg"
 defaultFeaturedImage = "/img/featured.svg"
 
 [header]
-layout = "basic"
+layout = "fixed-fill-blur"
 
 [footer]
 showMenu = true
@@ -23,14 +23,14 @@ showAppearanceSwitcher = true
 showScrollToTop = true
 
 [homepage]
-layout = "profile"
-showRecent = false
+layout = "background"
+showRecent = true
 showRecentItems = 5
-showMoreLink = false
-showMoreLinkDest = "/posts/"
-cardView = false
+showMoreLink = true
+showMoreLinkDest = "/blog/"
+cardView = true
 cardViewScreenWidth = false
-layoutBackgroundBlur = false
+layoutBackgroundBlur = true
 
 [article]
 showDate = true
@@ -40,6 +40,7 @@ showDateOnlyInArticle = false
 showDateUpdated = false
 showAuthor = true
 showHero = false
+heroStyle = "background"
 layoutBackgroundBlur = true
 layoutBackgroundHeaderSpace = true
 showBreadcrumbs = true
@@ -56,6 +57,9 @@ showTaxonomies = true
 showAuthorsBadges = false
 showWordCount = true
 showZenMode = true
+showRelatedContent = true
+relatedContentLimit = 3
+sharingLinks = ["twitter", "facebook", "email", "whatsapp"]
 
 [list]
 showHero = false

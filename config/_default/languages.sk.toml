@@ -1,0 +1,69 @@
+disabled = false
+languageCode = "sk"
+languageName = "Slovenčina"
+weight = 1
+title = "Matúš Pilňan"
+
+[params]
+displayName = "SK"
+isoCode = "sk"
+rtl = false
+dateFormat = "2 January 2006"
+
+[params.author]
+image = "MatusPilnan.jpg"
+headline = "Punkrock. Pivo. Príroda. Nie nutne v tomto poradí."
+name = "Ing. Matúš Pilňan"
+bio = "Vadúcko"
+  links = [
+    { link = "https://matuspilnan.github.io.com/" },
+    { github = "https://github.com/MatusPilnan" },
+    { instagram = "https://instagram.com/matuspilnan" },
+    { strava = "https://strava.com/athletes/matuspilnan" },
+    { facebook = "https://www.facebook.com/profile.php?id=100012551851346" },
+    { steam = "https://steamcommunity.com/profiles/76561198092433668" },
+    { youtube = "https://youtube.com/@matuspilnan9648" },
+    { x-twitter = "https://twitter.com/Hozentrogel" },
+#     { email = "mailto:hello@your_domain.com" },
+#     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
+#     { apple = "https://www.apple.com" },
+#     { blogger = "https://username.blogspot.com/" },
+#     { bluesky = "https://bsky.app/profile/username" },
+#     { codepen = "https://codepen.io/username" },
+#     { dev = "https://dev.to/username" },
+#     { discord = "https://discord.gg/invitecode" },
+#     { dribbble = "https://dribbble.com/username" },
+#     { flickr = "https://www.flickr.com/photos/username/" },
+#     { foursquare = "https://foursquare.com/username" },
+#     { gitlab = "https://gitlab.com/username" },
+#     { google = "https://www.google.com/" },
+#     { hashnode = "https://username.hashnode.dev" },
+#     { itch-io = "https://username.itch.io" },
+#     { keybase = "https://keybase.io/username" },
+#     { kickstarter = "https://www.kickstarter.com/profile/username" },
+#     { lastfm = "https://lastfm.com/user/username" },
+#     { linkedin = "https://linkedin.com/in/username" },
+#     { mastodon = "https://mastodon.instance/@username" },
+#     { medium = "https://medium.com/username" },
+#     { microsoft = "https://www.microsoft.com/" },
+#     { orcid = "https://orcid.org/userid" },
+#     { patreon = "https://www.patreon.com/username" },
+#     { pinterest = "https://pinterest.com/username" },
+#     { reddit = "https://reddit.com/user/username" },
+#     { researchgate = "https://www.researchgate.net/profile/username" },
+#     { slack = "https://workspace.url/team/userid" },
+#     { snapchat = "https://snapchat.com/add/username" },
+#     { soundcloud = "https://soundcloud.com/username" },
+#     { spotify = "https://open.spotify.com/user/userid" },
+#     { stack-overflow = "https://stackoverflow.com/users/userid/username" },
+#     { telegram = "https://t.me/username" },
+#     { threads = "https://www.threads.net/@username" },
+#     { tiktok = "https://tiktok.com/@username" },
+#     { tumblr = "https://username.tumblr.com" },
+#     { twitch = "https://twitch.tv/username" },
+#     { twitter = "https://twitter.com/username" },
+#     { whatsapp = "https://wa.me/phone-number" },
+#     { ko-fi = "https://ko-fi.com/username" },
+#     { codeberg = "https://codeberg.org/username"},
+  ]
+

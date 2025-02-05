@@ -1,16 +1,20 @@
 ---
-layout: default
+aliases:
+  - /barjake_redkovky
 title: Playlist Bárjaké reďkovky
 description: Jeden jediný playlist na celom svete, ktorý obsahuje všetko dôležité. Iné sú zbytočné.
 datatable: true
+showDate: false
+showWordCount: false
+showReadingTime: false
+showZenMode: false
+showEdit: false
 ---
-# Bárjaké reďkovky
 Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 1.2.2020:  
 
 *Nultý (000) sondžik je ako vždy Bon Jovi - You Give Love a Bad Name*  
 
 
-{: #table_id .display}
 |#  |Interpret|Názov skladby|
 |---|---------|-------------|
 |1|**Papa Roach**|Last Resort  
@@ -119,4 +123,7 @@ Toto je aktuálna forma playlistu Bárjaké reďkovky z dňa 1.2.2020:
 |104|**The Clash**|Should I Stay Or Should I Go
 |105|**Simple Plan**|Welcome to My Life
 |106|**The Go Go's**|Vacation
+{#table_id .display}
 
+
+{{< datatable >}}
