@@ -22,7 +22,7 @@
 
 [[main]]
   name = "Webové publikovanie"
-  pageRef = "about-me/work/zadanie-1"
+  pageRef = "series/wpub"
   weight = 30
 
 #[[main]]

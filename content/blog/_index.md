@@ -4,7 +4,7 @@ title: Jeblý šlabikár
 
 Tu sú nejaké novinky a tak...
 
-Primárny cieľom zbierky písomností je mať po úspečnej SNPčke úložisko pre zápisky z nadchádzajúcich vejletov ktoré nemajú vlastnú stránku na to určenú. V plánoch sú (zhruba podľa pravdepodobnosti realizácie):
+Primárny cieľom tejto zbierky písomností je teraz mať po [úspečnej SNPčke]({{< ref "series/snp" >}}) úložisko pre zápisky z nadchádzajúcich dobrodružstiev ktoré nemajú vlastnú stránku na to určenú. V plánoch sú (zhruba podľa pravdepodobnosti realizácie):
 
 - Záhorácka magistrála
 - Rudná magistrála

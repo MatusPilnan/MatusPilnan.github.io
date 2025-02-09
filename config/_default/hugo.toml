@@ -23,11 +23,15 @@ enableEmoji = true
 
 [imaging]
   anchor = 'Center'
+  [imaging.exif]
+    disableDate = false
+    disableLatLong = false
+    excludeFields = 'orientation'
 
 [taxonomies]
   tag = "tags"
   category = "categories"
-  author = "authors"
+  # author = "authors"
   series = "series"
 
 [sitemap]
@@ -67,3 +71,9 @@ enableEmoji = true
       name = 'fragmentrefs'
       type = 'fragments'
       weight = 10
+
+# removePathAccents=true
+
+# [permalinks]
+#   [permalinks.page]
+#     blog = '/blog/:year/:month/:day/:slug/'
