@@ -1,15 +1,12 @@
 {
-  "name": "Hugo & pnpm",
-
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "name": "Hugo",
+  "image": "hugomods/hugo:exts",
 
   // 👇 Features to add to the Dev Container. More info: https://containers.dev/implementors/features.
   // "features": { "ghcr.io/devcontainers/features/docker-in-docker:2": {} },
 
   // 👇 Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [],
+  "forwardPorts": [1313],
 
   // Configure tool-specific properties.
   "customizations": {
@@ -33,7 +30,6 @@
     }
   },
 
-  "remoteUser": "hugo",
+  "remoteUser": "hugo"
 
-  "postCreateCommand": "pnpm install-completion zsh"
 }
