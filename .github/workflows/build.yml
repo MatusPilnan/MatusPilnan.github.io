@@ -1,6 +1,8 @@
 name: Build website
 
 on:
+    workflow_dispatch: 
+    workflow_call: 
     push:
         branches: master
 
@@ -73,3 +75,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
