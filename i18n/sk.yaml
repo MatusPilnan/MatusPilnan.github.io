@@ -1,0 +1,72 @@
+global:
+  language: "SK"
+
+article:
+  anchor_label: "Kotva"
+  date: "{{ .Date }}"
+  date_updated: "Aktualizované: {{ .Date }}"
+  draft: "Návrh"
+  edit_title: "Upraviť"
+  reading_time:
+    one: "{{ .Count }} min"
+    other: "{{ .Count }} min"
+  reading_time_title: "Doba čítania"
+  table_of_contents: "Obsah"
+  word_count:
+    one: "{{ .Count }} slovo"
+    few: "{{ .Count }} slová"
+    other: "{{ .Count }} slov"
+  views:
+    one: "{{ .Count }} zhliadnutie"
+    few: "{{ .Count }} videnia"
+    other: "{{ .Count }} videní"
+  likes:
+    other: "{{ .Count }} páči se mi"
+  part_of_series: "Tento článok je súčasťou série."
+  part: "Časť"
+  this_article: "Tento článok"
+  related_articles: "Súvisiace"
+
+author:
+  byline_title: "Autor"
+
+code:
+  copy: "Kopírovať"
+  copied: "Skopírované"
+
+error:
+  404_title: "Stránka nenájdená :confused:"
+  404_error: "Error 404"
+  404_description: "Zdá sa, že stránka neexistuje."
+
+footer:
+  dark_appearance: "Prepnúť na tmavý režim"
+  light_appearance: "Prepnúť na světlý režim"
+  powered_by: "Vytvorené s pomocou {{ .Hugo }} &amp; {{ .Theme }}"
+
+list:
+  externalurl_title: "Odkaz na externú stránku"
+  no_articles: "Táto sekcia zatiaľ neobsahuje žiadne články."
+
+nav:
+  scroll_to_top_title: "Hore"
+  skip_to_main: "Preskočiť na hlavný obsah"
+
+search:
+  open_button_title: "Hľadať (/)"
+  close_button_title: "Zavrieť (Esc)"
+  input_placeholder: "Hľadať..."
+
+sharing:
+  email: "Poslať emailom"
+  facebook: "Zdieľať na Facebook"
+  linkedin: "Zdieľať na LinkedIn"
+  pinterest: "Pripnúť na Pinterest"
+  reddit: "Pridať na Reddit"
+  twitter: "Tweet na Twitter"
+
+shortcode:
+  recent_articles: "Nedávne"
+
+recent:
+  show_more: "Zobraziť ďalšie"

@@ -1,0 +1,79 @@
+# -- Site Configuration --
+# Refer to the theme docs for more details about each of these parameters.
+# https://blowfish.page/docs/getting-started/
+
+theme = "blowfish" # UNCOMMENT THIS LINE
+baseURL = "https://matuspilnan.github.io/"
+defaultContentLanguage = "sk"
+
+# pluralizeListTitles = "true" # hugo function useful for non-english languages, find out more in  https://gohugo.io/getting-started/configuration/#pluralizelisttitles
+
+enableRobotsTXT = true
+summaryLength = 1
+
+buildDrafts = false
+buildFuture = false
+
+enableEmoji = true
+
+# googleAnalytics = "G-XXXXXXXXX"
+
+[pagination]
+  pagerSize = 100
+
+[imaging]
+  anchor = 'Center'
+  [imaging.exif]
+    disableDate = false
+    disableLatLong = false
+    excludeFields = 'orientation'
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  # author = "authors"
+  series = "series"
+
+[sitemap]
+  changefreq = 'daily'
+  filename = 'sitemap.xml'
+  priority = 0.5
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[related]
+  threshold = 0
+  toLower = false
+
+    [[related.indices]]
+        name = "tags"
+        weight = 100
+
+    [[related.indices]]
+        name = "categories"
+        weight = 100
+
+    [[related.indices]]
+        name = "series"
+        weight = 50
+
+    [[related.indices]]
+        name = "authors"
+        weight = 20
+
+    [[related.indices]]
+        name = "date"
+        weight = 10
+
+    [[related.indices]]
+      applyFilter = false
+      name = 'fragmentrefs'
+      type = 'fragments'
+      weight = 10
+
+# removePathAccents=true
+
+# [permalinks]
+#   [permalinks.page]
+#     blog = '/blog/:year/:month/:day/:slug/'

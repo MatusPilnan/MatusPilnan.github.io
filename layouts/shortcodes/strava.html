@@ -1,0 +1,11 @@
+{{ $activity := "" }}
+{{ if reflect.IsMap .Params }}
+    {{ $activity = .Params.activity }}
+{{ else }}
+    {{ $activity = index .Params 0 }}
+{{ end }}
+<div>
+    <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="{{ $activity }}" data-style="standard"
+    data-from-embed="false"></div>
+    <script src="https://strava-embeds.com/embed.js"></script>
+</div>
