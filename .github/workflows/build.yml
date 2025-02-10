@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
         name: Checkout Obsidian vault
         with:
-            repository: 'https://github.com/MatusPilnan/Knowledge'
+            repository: 'MatusPilnan/Knowledge'
 
       - name: Download Obsidian export
         run: wget -c https://github.com/MatusPilnan/obsidian-export/releases/download/v25.2.0/obsidian-export-x86_64-unknown-linux-gnu.tar.xz -O - | tar -xz
