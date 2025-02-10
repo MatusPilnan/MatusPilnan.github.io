@@ -25,7 +25,7 @@ jobs:
         run: mkdir -p ~/data/content
 
       - name: Run export
-        run: ./obsidian-export . /data/content --only-tags publish --remove-tags publish
+        run: ./obsidian-export . ~/data/content --only-tags publish --remove-tags publish
 
       - name: Upload exported notes
         uses: actions/upload-artifact@v4
