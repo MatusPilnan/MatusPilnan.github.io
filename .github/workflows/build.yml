@@ -55,7 +55,9 @@ jobs:
             path: content
 
       - name: Display structure of downloaded files
-        run: tree -a -- .
+        run: |
+            tree .
+            ls -al
 
       - name: Build site with Hugo
         run: hugo
