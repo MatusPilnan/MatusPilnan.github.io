@@ -40,13 +40,20 @@ jobs:
     runs-on: ubuntu-22.04
     needs: import-obsidian-notes
     name: Build website
-    container: hugomods/hugo:ci-0.143.1
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
             fetch-depth: 0
             submodules: recursive
+            
+      - name: Hugo setup
+        uses: peaceiris/actions-hugo@v2.4.12
+        with:
+            hugo-version: '0.143.1'
+            extended: true
+        env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
 
       - name: Download exported Obsidian content
         uses: actions/download-artifact@v4
