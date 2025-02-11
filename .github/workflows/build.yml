@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs: import-obsidian-notes
     name: Build website
-    container: hugomods/hugo:ci-0.141.1
+    container: hugomods/hugo:ci-0.143.1
     steps:
       - name: Checkout
         uses: actions/checkout@v4
