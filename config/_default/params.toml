@@ -58,7 +58,7 @@ showTaxonomies = true
 showAuthorsBadges = false
 showWordCount = true
 showZenMode = true
-showRelatedContent = false
+showRelatedContent = true
 relatedContentLimit = 3
 sharingLinks = ["twitter", "facebook", "email", "whatsapp"]
 
