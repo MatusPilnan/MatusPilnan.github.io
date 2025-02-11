@@ -4,3 +4,4 @@ Pre správne fungovanie treba nainštalovať plugin [jekyll-timeago](https://git
 gem install jekyll-timeago
 ```
 Stránka bola vyvíjaná a testovaná na Windows 10 s prehliadačom Google Chrome.
+
