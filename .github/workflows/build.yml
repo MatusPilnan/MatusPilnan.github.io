@@ -41,7 +41,7 @@ jobs:
     needs: import-obsidian-notes
     name: Build website
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
             fetch-depth: 0
             submodules: recursive
@@ -62,7 +62,6 @@ jobs:
 
       - name: Display structure of downloaded files
         run: |
-            find / -name "blowfish"
             ls -al
             cat .gitmodules
 
