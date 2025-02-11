@@ -58,6 +58,7 @@ jobs:
         run: |
             tree .
             ls -al
+            cat .gitmodules
 
       - name: Build site with Hugo
         run: hugo
