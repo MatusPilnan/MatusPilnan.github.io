@@ -11,6 +11,8 @@ defaultContentLanguage = "sk"
 enableRobotsTXT = true
 summaryLength = 1
 
+timeout = 300
+
 buildDrafts = false
 buildFuture = false
 
