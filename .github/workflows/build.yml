@@ -40,6 +40,7 @@ jobs:
     runs-on: ubuntu-22.04
     needs: import-obsidian-notes
     name: Build website
+    container: hugomods/hugo:ci-0.141.1
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -56,7 +57,7 @@ jobs:
         run: ls -al content
 
       - name: Build site with Hugo
-        uses: chabad360/hugo-actions@master
+        run: hugo
     
       - name: Upload static files as artifact
         id: deployment
