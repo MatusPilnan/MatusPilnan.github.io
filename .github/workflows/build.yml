@@ -62,7 +62,7 @@ jobs:
 
       - name: Display structure of downloaded files
         run: |
-            tree .
+            find / blowfish
             ls -al
             cat .gitmodules
 
