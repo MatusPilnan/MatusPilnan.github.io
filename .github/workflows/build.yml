@@ -41,8 +41,7 @@ jobs:
     needs: import-obsidian-notes
     name: Build website
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v2
         with:
             fetch-depth: 0
             submodules: recursive
