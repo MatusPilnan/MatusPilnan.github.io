@@ -61,10 +61,14 @@ jobs:
             name: from-obsidian
             path: content
 
-      - name: Display structure of downloaded files
-        run: |
-            ls -al
-            cat .gitmodules
+      - name: Correct EXIF orientation
+        uses: jruipinto/ImageMagick-action@v1
+        with:
+          # ImageMagick command to be executed
+          command: mogrify -auto-orient ./content/**/*.{jpg|jpeg|png} 
+
+      - name: Display structure of files
+        run: tree content
 
       - name: Build site with Hugo
         run: hugo
