@@ -1,9 +1,9 @@
 name: Build website
 
 on:
+  workflow_dispatch: 
   repository_dispatch:
     types: [obsidian-publish] 
-  workflow_call: 
   push:
       branches: master
 
