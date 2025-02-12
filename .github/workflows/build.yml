@@ -1,10 +1,11 @@
 name: Build website
 
 on:
-    workflow_dispatch: 
-    workflow_call: 
-    push:
-        branches: master
+  repository_dispatch:
+    types: [obsidian-publish] 
+  workflow_call: 
+  push:
+      branches: master
 
 jobs:
   import-obsidian-notes:
