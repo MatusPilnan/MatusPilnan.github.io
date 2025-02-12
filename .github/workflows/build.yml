@@ -65,7 +65,7 @@ jobs:
         uses: mfinelli/setup-imagemagick@v6
             
       - name: Correct EXIF orientation
-        run:  for dir in content/*/; do; mogrify -auto-orient $dir/*.{jpg,jpeg,png}; done;
+        run:  for dir in content/*/; do mogrify -auto-orient $dir/*.{jpg,jpeg,png}; done;
 
       - name: Display structure of files
         run: tree content
