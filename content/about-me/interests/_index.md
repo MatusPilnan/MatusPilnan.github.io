@@ -1,4 +1,5 @@
 ---
 title: Moje záujmy
-description: Veci čo ma bavia, voľnočasové aktivity
+summary: Veci čo ma bavia, voľnočasové aktivity
+date: 2019-04-26
 ---

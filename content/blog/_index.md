@@ -4,7 +4,7 @@ title: Jeblý šlabikár
 
 Tu sú nejaké novinky a tak...
 
-Primárnym cieľom tejto zbierky písomností je teraz mať po [úspečnej SNPčke]({{< ref "series/snp" >}}) úložisko pre zápisky z nadchádzajúcich dobrodružstiev ktoré nemajú vlastnú stránku na to určenú.  
+Primárnym cieľom tejto zbierky písomností je teraz mať po [úspešnej SNPčke]({{< ref "series/snp" >}}) úložisko pre zápisky z nadchádzajúcich dobrodružstiev ktoré nemajú vlastnú stránku na to určenú.  
 
 V plánoch sú (zhruba podľa pravdepodobnosti realizácie):
 

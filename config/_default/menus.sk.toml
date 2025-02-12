@@ -31,12 +31,12 @@
 #  pageRef = "posts"
 #  weight = 20
 
-#[[subnavigation]]
+# [[subnavigation]]
 #  name = "An interesting topic"
-#  pageRef = "tags/interesting-topic"
+#  pageRef = "tags/snp"
 #  weight = 10
 
-#[[subnavigation]]
+# [[subnavigation]]
 #  name = "My Awesome Category"
 #  pre = "github"
 #  pageRef = "categories/awesome"
@@ -58,12 +58,18 @@
 # the copyright notice. Configure as per the main menu above.
 
 
-# [[footer]]
-#   name = "Tags"
-#   pageRef = "tags"
-#   weight = 10
+[[footer]]
+  name = "SNP"
+  pageRef = "series/snp"
+  weight = 0
 
-# [[footer]]
-#   name = "Categories"
-#   pageRef = "categories"
-#   weight = 20
+[[footer]]
+  name = "DDSB"
+  pre = 'sound'
+  url = "https://matuspilnan.github.io/Dano-Drevo-Soundboard/"
+  weight = 10
+
+[[footer]]
+  name = "Reďkovky"
+  pageRef = "barjake-redkovky"
+  weight = 20
