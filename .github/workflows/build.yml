@@ -65,7 +65,7 @@ jobs:
         uses: jruipinto/ImageMagick-action@v1
         with:
           # ImageMagick command to be executed
-          command: mogrify -auto-orient content/**/*.{jpg|jpeg|png} 
+          command: mogrify -auto-orient "content/**/*.{jpg,jpeg,png}"
 
       - name: Display structure of files
         run: tree content
