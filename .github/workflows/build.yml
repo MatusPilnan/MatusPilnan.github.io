@@ -33,7 +33,7 @@ jobs:
       - name: Fix escaped shortcodes
         run: |
           shopt -s globstar
-          sed -i 's/{{\</{{</g' ~/data/content/**/*.md
+          sed -i 's/{{\\</{{</g' ~/data/content/**/*.md
 
       - name: Upload exported notes
         uses: actions/upload-artifact@v4
