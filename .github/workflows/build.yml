@@ -30,6 +30,9 @@ jobs:
       - name: Run export
         run: ./obsidian-export . ~/data/content --only-tags publish --remove-tags publish
 
+      - name: Fix escaped shortcodes
+        run: sed -i 's/{{\</{{</g' ~/data/content/**/*.md
+
       - name: Upload exported notes
         uses: actions/upload-artifact@v4
         with:
