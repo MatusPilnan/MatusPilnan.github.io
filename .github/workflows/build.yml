@@ -75,8 +75,22 @@ jobs:
       - name: Display structure of files
         run: tree content
 
+      - name: Restore cached Resources
+        id: cache-resources-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: resources/_gen
+          key: ${{ runner.os }}-resources
+
       - name: Build site with Hugo
         run: hugo
+
+      - name: Save Resources
+        id: cache-resources-save
+        uses: actions/cache/save@v4
+        with:
+          path: resources/_gen
+          key: ${{ steps.cache-resources-restore.outputs.cache-primary-key }}
     
       - name: Upload static files as artifact
         id: deployment
