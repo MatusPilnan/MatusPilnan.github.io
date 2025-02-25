@@ -10,6 +10,7 @@ defaultContentLanguage = "sk"
 
 enableRobotsTXT = true
 summaryLength = 1
+removePathAccents=true
 
 timeout = 300
 
@@ -74,8 +75,7 @@ enableEmoji = true
       type = 'fragments'
       weight = 10
 
-# removePathAccents=true
 
-# [permalinks]
-#   [permalinks.page]
-#     blog = '/blog/:year/:month/:day/:slug/'
+[permalinks]
+  [permalinks.page]
+    blog = '/blog/:year/:month/:day/:slug'
