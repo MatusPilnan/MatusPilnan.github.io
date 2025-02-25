@@ -92,7 +92,9 @@ showTableOfContents = false
 cardView = false
 
 [term]
-showHero = false
+showHero = true
+heroStyle = "background"
+layoutBackgroundBlur = true
 showBreadcrumbs = false
 showViews = false
 showLikes = false
