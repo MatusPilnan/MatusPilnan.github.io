@@ -1,9 +1,9 @@
 ---
 title: Cesta hrdinov SNP
-showHero: true
-heroStyle: background
 ---
 Pôvodne publikované na [CestaSNP.sk](https://cestasnp.sk/na/andrej-kiko-martin-matus). Na tomto mieste obohatené o fotodokumentáciu a natrackované etapy cesty na Strave.
+
+A tiež nejaké tie bonusové storky, ktoré sa nezmestili do pôvodných reportov.
 
 ---
 
