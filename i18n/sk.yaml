@@ -21,7 +21,7 @@ article:
     few: "{{ .Count }} videnia"
     other: "{{ .Count }} videní"
   likes:
-    other: "{{ .Count }} páči se mi"
+    other: "{{ .Count }} páči sa mi"
   part_of_series: "Tento článok je súčasťou série."
   part: "Časť"
   this_article: "Tento článok"
