@@ -1,5 +1,6 @@
 ---
 title: Cesta hrdinov SNP
+sort_by: Date
 ---
 Pôvodne publikované na [CestaSNP.sk](https://cestasnp.sk/na/andrej-kiko-martin-matus). Na tomto mieste obohatené o fotodokumentáciu a natrackované etapy cesty na Strave.
 
@@ -12,5 +13,6 @@ A tiež nejaké tie bonusové storky, ktoré sa nezmestili do pôvodných report
 Vyzbrojení predovšetkým silnými morálno-vôľovými vlastnosťami, polovicou skladu Decathlonu a jedlom sa vydávajú v ústrety dobrodružstvu. Koľkí z nich prežijú? Koľkí z nich dojdú až na Devín? Koľko "lecker Bierchen :beer:" a borky :evergreen_tree: na to bude treba? Ako to celé dopadne? Ktovie...
 
 ---
+
 
 ![Logo expedície](feature-snp-nalepka.png)
