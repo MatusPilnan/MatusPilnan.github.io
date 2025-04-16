@@ -1,5 +1,7 @@
 ---
 title: Jeblý šlabikár
+cascade:
+  showComments: true
 ---
 
 Tu sú nejaké novinky a tak...
