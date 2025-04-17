@@ -10,7 +10,6 @@ Primárnym cieľom tejto zbierky písomností je teraz mať po [úspešnej SNPč
 
 V plánoch sú (zhruba podľa pravdepodobnosti realizácie):
 
-- Záhorácka magistrála (vybavená ✅ 15.2.2025, report bude keď bude)
 - Rudná magistrála
 - (neoficiálna) Reprezentácia SR na Kastenlauf-e v Nemecku
 - Santa Pott 2025: bicyklom do Lübecku
