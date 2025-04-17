@@ -12,6 +12,8 @@ forgejoDefaultServer = "https://v8.next.forgejo.org"
 defaultBackgroundImage = "/img/background.svg"
 defaultFeaturedImage = "/img/featured.svg"
 
+smartTOC = true
+
 [header]
 layout = "fixed-fill-blur"
 
