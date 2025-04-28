@@ -10,4 +10,4 @@ Cestu začíname v sobotu sedemnásteho mája v Telgárte. Bude to len nultý de
 
 {{< mapycz "jadafomafu" >}}
 
-A po tom ako sa tento challenge osvedčil na [Záhoráckej](https://matuspilnan.github.io/blog/2025/02/15/zahoracka-magistrala-sa-da-prejst-na-jeden-zatah...-ale-mala-by-sa/), aj teraz sa pohrávame udeliť bonusové body za absolvovanie bez alkoholu. Uvidíme ako to dopadne.
+A po tom ako sa tento challenge osvedčil na [Záhoráckej](https://matuspilnan.github.io/blog/2025/02/15/zahoracka-magistrala-sa-da-prejst-na-jeden-zatah...-ale-mala-by-sa/), aj teraz sa pohrávame s myšlienkou udeliť bonusové body za absolvovanie bez alkoholu. Uvidíme ako to dopadne.
