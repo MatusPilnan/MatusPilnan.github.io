@@ -10,8 +10,9 @@ Primárnym cieľom tejto zbierky písomností je teraz mať po [úspešnej SNPč
 
 V plánoch sú (zhruba podľa pravdepodobnosti realizácie):
 
-- Rudná magistrála
-- (neoficiálna) Reprezentácia SR na Kastenlauf-e v Nemecku
+- [Rudná magistrála]({{< ref "series/rudna" >}}), dovolenka už nahlásená na termín 17-25.5.
+- ~(neoficiálna) Reprezentácia SR na Kastenlauf-e v Nemecku~ možno inokedy. nepodarilo sa zložiť družstvo
+- Triglav
 - Santa Pott 2025: bicyklom do Lübecku
 - GR11 v Pyrenejách
 - Svätojakubská cesta
