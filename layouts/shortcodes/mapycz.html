@@ -1,0 +1,9 @@
+{{ $map := "" }}
+{{ if reflect.IsMap .Params }}
+    {{ $map = .Params.map }}
+{{ else }}
+    {{ $map = index .Params 0 }}
+{{ end }}
+<div class="rounded-md shadow-md overflow-hidden">
+  <iframe style="border:none" class="w-full aspect-video" src="https://mapy.com/s/{{ $map }}" frameborder="0"></iframe>
+</div>
