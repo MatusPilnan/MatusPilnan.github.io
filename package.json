@@ -1,0 +1,22 @@
+{
+  "name": "matuspilnan.github.io",
+  "version": "1.0.0",
+  "description": "Matus Pilnan personal web",
+  "homepage": "https://matuspilnan.github.io",
+  "bugs": {
+    "url": "https://github.com/MatusPilnan/MatusPilnan.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatusPilnan/MatusPilnan.github.io.git"
+  },
+  "license": "ISC",
+  "author": "Matus Pilnan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "server": "hugo server -b http://localhost",
+    "dev": "NODE_ENV=development ./themes/blowfish/node_modules/@tailwindcss/cli/dist/index.mjs -c ./themes/blowfish/tailwind.config.js -i ./themes/blowfish/assets/css/main.css -o ./assets/css/compiled/main.css --jit -w",
+    "build": "NODE_ENV=production ./themes/blowfish/node_modules/@tailwindcss/cli/dist/index.mjs -c ./themes/blowfish/tailwind.config.js -i ./themes/blowfish/assets/css/main.css -o ./assets/css/compiled/main.css --jit"
+  }
+}
