@@ -51,6 +51,7 @@ list:
 nav:
   scroll_to_top_title: "Hore"
   skip_to_main: "Preskočiť na hlavný obsah"
+  comments_title: "Komentáre"
 
 search:
   open_button_title: "Hľadať (/)"
