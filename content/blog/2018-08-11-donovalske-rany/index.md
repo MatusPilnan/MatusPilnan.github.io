@@ -2,7 +2,7 @@
 title: Donovalské facky
 date: 2018-08-11
 tags: [Turistika]
-summary: "Zabudnutý klenot: prvý turistický blog, poháňaný o.i. depresiou. Originál písaný ako správa na Messenger."
+summary: "Zabudnutý klenot: prvý turistický blog. Originál písaný ako správa na Messenger."
 ---
 
 {{< lead >}}
