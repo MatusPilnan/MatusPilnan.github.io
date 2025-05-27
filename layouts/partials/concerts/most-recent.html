@@ -1,0 +1,29 @@
+{{ $data := .data }}
+{{ with .page }}
+  {{ $last := dict }}
+  {{ range last 1 $data }}
+    {{ $last = partial "parse-concert" . }}
+  {{ end }}
+  {{ $lastFew := slice }}
+  {{ range last (add 2 .Params.limitRecentBands) $data }}
+    {{ $lastFew = append (partial "parse-concert" .) $lastFew }}
+  {{ end }}
+  {{ $lastEvent := $lastFew }}
+  {{ if $last.event }}
+    {{ $lastFew = where $lastFew "event" $last.event }}
+  {{ else }}
+    {{ $lastFew = where $lastFew "date" $last.date }}
+    {{ $lastFew = where $lastFew "city" $last.city }}
+    {{ $lastFew = where $lastFew "location" $last.location }}
+    {{ $lastFew = collections.Reverse $lastFew | after 1 | collections.Reverse }}
+  {{ end }}
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md">
+    <p class="text-sm mb-2">Ostatný koncert</p>
+    <p class="font-extrabold text-2xl">{{ $last.event | default $last.band }}</p>
+    <p class="text-sm">{{ $last.date }}<span class="px-2 text-primary-500">&middot;</span>{{ $last.city }}{{ with $last.location }}<span class="px-2 text-primary-500">&middot;</span>{{ . }}{{ end }}</p>
+    {{ $bands := apply $lastFew "index" "." "band" | collections.Reverse }}
+    {{ if $bands }}
+      <p class="mt-4">w/ {{ delimit (first .Params.limitRecentBands $bands) ", " }}{{ if len $bands | lt .Params.limitRecentBands }} a ďalší.{{ end }}</p>
+    {{ end }}
+  </div>
+{{ end }}

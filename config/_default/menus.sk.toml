@@ -73,3 +73,8 @@
   name = "Reďkovky"
   pageRef = "barjake-redkovky"
   weight = 20
+
+[[footer]]
+  name = "Koncerty"
+  pageRef = "koncerty"
+  weight = 30

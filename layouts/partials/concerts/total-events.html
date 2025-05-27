@@ -1,0 +1,21 @@
+{{ $data := .data }}
+{{ with .page }}
+  {{ $last := index $data 0 | partial "parse-concert.html" }}
+  {{ $events := 1 }}
+  {{ range after 1 $data }}
+    {{ $current := partial "parse-concert.html" . }}
+    {{ if $current.event }}
+      {{ if $last.event | neq $current.event }}
+        {{ $events = add 1 $events }}
+      {{ end }}
+    {{ else }}
+      {{ if $last.event }}
+        {{ $events = add 1 $events }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md">
+    <p class="text-sm mb-2">Celkovo podujatí</p>
+    <p class="font-extrabold text-4xl">{{ $events }}</p>
+  </div>
+{{ end }}

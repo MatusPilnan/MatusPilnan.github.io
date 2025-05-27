@@ -1,0 +1,48 @@
+{{ define "main" }}
+{{ if .Params.showHero | default (.Site.Params.article.showHero | default false) }}
+{{ $heroStyle := .Params.heroStyle }}
+{{ if not $heroStyle }}{{ $heroStyle = .Site.Params.article.heroStyle }}{{ end }}
+{{ $heroStyle := print "partials/hero/" $heroStyle ".html" }}
+{{ if templates.Exists $heroStyle }}
+{{ partial $heroStyle . }}
+{{ else }}
+{{ partial "partials/hero/basic.html" . }}
+{{ end }}
+{{ end }}
+
+<h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral text-center">
+  <span class="block">{{ .Title }}</span>
+  <span class="block text-2xl font-light mt-2">{{ .Params.subtitle }}</span>
+</h1>
+{{ $data := slice }}
+{{ $url := printf "https://docs.google.com/spreadsheets/d/%s/gviz/tq?tqx=out:csv&sheet=%s" .Params.sheetId .Params.SheetName }}
+{{ with try (resources.GetRemote $url) }}
+  {{ with .Err }}
+    {{ errorf "%s" . }}
+  {{ else with .Value }}
+    {{ $opts := dict "delimiter" "," }}
+    {{ $data = . | transform.Unmarshal $opts | after 1 }}
+    {{ $data = apply $data "first" "6" "." }}
+    {{/*  {{ $data = first 200 $data }}  */}}
+  {{ else }}
+    {{ errorf "Unable to get remote resource %q" $url }}
+  {{ end }}
+{{ end }}
+<div class="my-8 grid grid-cols-3 gap-4">
+
+  {{ with dict "page" . "data" $data }}
+
+  {{ partial "concerts/total.html" . }}
+
+  {{ partial "concerts/total-events.html" . }}
+
+  {{ partial "concerts/most-recent.html" . }}
+
+  {{ end }}
+  
+</div>
+<div class="prose mx-auto">
+  <pre>{{ $data | jsonify (dict "indent" "  ") }}</pre>
+  
+</div>
+{{ end }}
