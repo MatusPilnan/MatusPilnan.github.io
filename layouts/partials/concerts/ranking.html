@@ -1,0 +1,78 @@
+{{ $data := .data }}
+{{ with .page }}
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md col-span-3">
+    <p class="text-sm mb-2">Rebríček</p>
+
+    {{ $amounts := newScratch }}
+    {{ range $data }}
+      {{ $concert := partial "concerts/parse" . }}
+      {{ $amounts.Add $concert.band 1 }}
+    {{ end }}
+
+    {{ $dataset := slice }}
+    {{ range $artist, $count := $amounts.Values }}
+      {{ $dataset = $dataset | append (dict "y" $artist "x" $count) }}
+    {{ end }}
+    {{ $dataset = sort $dataset "x" "desc" }}
+    
+    <div class="overflow-auto max-h-96">
+      <div class="chart">
+        {{ $id := "chart-concerts-ranking" }}
+        <canvas id="{{ $id }}" height="{{ len $dataset | mul 25 }}"></canvas>
+        <script type="text/javascript">
+          window.addEventListener("DOMContentLoaded", (event) => {
+            const ctx = document.getElementById("{{ $id }}");
+            const data = {{ $dataset | jsonify | safeJS }};
+            const chart = new Chart(ctx, {
+              type: 'bar',
+              options: {
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                plugins: {
+                  legend: {
+                    display: false,
+                  }
+                },
+                scales: {
+                  x: {
+                    ticks: {
+                      color: '#fff'
+                    },
+                    grid: {
+                      color: "rgba(" + getComputedStyle(document.documentElement).getPropertyValue("--color-neutral-300") + ", 0.25)"
+                    },
+                    border: {
+                      display: false
+                    }
+                  },
+                  y: {
+                    grid: {
+                      display: false
+                    },
+                    ticks: {
+                      color: '#fff',
+                      callback: function(value, index, ticks) {
+                        const label = this.getLabelForValue(value);
+                        if (label.length > 18) {
+                          return label.slice(0, 15) + '...'
+                        }
+                        return label
+                      }
+                    }
+                  }
+                }
+              },
+              data: {
+                datasets: [{
+                  label: 'Koncerty',
+                  tension: 0.25,
+                  data: data,
+                }]
+              }
+            });
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+{{ end }}

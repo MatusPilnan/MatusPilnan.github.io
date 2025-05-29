@@ -1218,6 +1218,9 @@ body.zen-mode-enable {
   .h-\[6\.5rem\] {
     height: 6.5rem;
   }
+  .h-\[10vh\] {
+    height: 10vh;
+  }
   .h-\[150px\] {
     height: 150px;
   }
@@ -1226,6 +1229,9 @@ body.zen-mode-enable {
   }
   .h-\[1000px\] {
     height: 1000px;
+  }
+  .h-\[99999vh\] {
+    height: 99999vh;
   }
   .h-auto {
     height: auto;
@@ -1239,8 +1245,20 @@ body.zen-mode-enable {
   .max-h-3 {
     max-height: calc(var(--spacing) * 3);
   }
+  .max-h-64 {
+    max-height: calc(var(--spacing) * 64);
+  }
+  .max-h-72 {
+    max-height: calc(var(--spacing) * 72);
+  }
+  .max-h-96 {
+    max-height: calc(var(--spacing) * 96);
+  }
   .max-h-\[5rem\] {
     max-height: 5rem;
+  }
+  .max-h-full {
+    max-height: 100%;
   }
   .min-h-0 {
     min-height: calc(var(--spacing) * 0);
