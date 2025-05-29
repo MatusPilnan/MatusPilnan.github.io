@@ -78,14 +78,30 @@
               src="{{ $src }}" 
               alt="{{ $alt }}" 
               class="uppercase rounded-full size-12 bg-neutral-300/75 dark:bg-neutral-600/75 flex items-center justify-center text-center text-xs self-center col-start-2 col-span-2">
+            
+            {{- with $spotifyArtist -}}
+            <a href="{{ .external_urls.spotify }}" target="_blank" class="pl-4 transition-colors hover:text-primary-600 dark:hover:text-primary-300 group">
+            {{ else }}
             <div class="pl-4">
-              <p class="font-extrabold text-xl">
-                {{ .band }}
-              </p>
+            {{ end }}
+              <div class="font-extrabold text-xl flex items-center">
+                <span>
+                  {{ .band -}}
+                </span>
+                {{- if $spotifyArtist -}}
+                <div class="scale-75 ml-1 text-neutral-300 dark:text-neutral-600 transition-colors group-hover:text-primary-600 dark:group-hover:text-primary-300">
+                  {{ partial "icon" "spotify" }}
+                </div>
+                {{ end }}
+              </div>
               <p class="text-sm">
                 {{ .count }}x, naposledy {{ .lastConcert.date }} ({{ .lastConcert.city }}{{ with default .lastConcert.location .lastConcert.event }}, {{.}}{{ end }})
               </p>
+            {{ if $spotifyArtist }}
+            </a>
+            {{ else }}
             </div>
+            {{ end }}
           </td>
         </tr>
         {{ end }}
