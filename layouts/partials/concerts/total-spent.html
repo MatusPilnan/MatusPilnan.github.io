@@ -1,0 +1,83 @@
+{{ $data := .data }}
+{{ with .page }}
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md col-span-2">
+    <p class="text-sm mb-2">Celkovo minuté</p>
+    {{ $amounts := newScratch }}
+    {{ $total := 0 }}
+    {{ range $data }}
+      {{ $concert := partial "concerts/parse" . }}
+      {{ $amounts.Add (index (split $concert.date ".") 2) $concert.price }}
+      {{ $total = add $total $concert.price }}
+    {{ end }}
+    <p class="font-extrabold text-4xl">{{ lang.FormatCurrency 2 "EUR" $total }}</p>
+    <div class="chart">
+      {{ $id := "chart-total-spending" }}
+      <canvas id="{{ $id }}"></canvas>
+      <script type="text/javascript">
+        window.addEventListener("DOMContentLoaded", (event) => {
+          const ctx = document.getElementById("{{ $id }}");
+          const data = {{ $amounts.Values | jsonify | safeJS }};
+          const chart = new Chart(ctx, {
+            type: 'line',
+            options: {
+              plugins: {
+                legend: {
+                  display: false,
+                }
+              },
+              scales: {
+                y: {
+                  display: false,
+
+                },
+                x: {
+                  grid: {
+                    display: false
+                  },
+                  border: {
+                    display: false
+                  }
+                }
+              }
+            },
+            data: {
+              datasets: [{
+                label: 'Výdavky',
+                tension: 0.25,
+                tooltip: {
+                  callbacks: {
+                    label: function(context) {
+                      let label = context.dataset.label || '';
+
+                      if (label) {
+                        label += ': ';
+                      }
+                      if (context.parsed.y !== null) {
+                        label += new Intl.NumberFormat('sk-SK', { style: 'currency', currency: 'EUR' }).format(context.parsed.y);
+                      }
+                      return label;
+                    }
+                  }
+                },
+                segment: {
+                  borderDash: (ctx) => {
+                    // Make the last segment dashed
+                    if (ctx.p1DataIndex === ctx.p0DataIndex + 1 && 
+                        ctx.p1DataIndex === Object.keys(data).length - 1) {
+                      return [6, 6];
+                    }
+                    return [0, 0]; // No dash for other segments
+                  }
+                },
+                data: data,
+              }]
+            }
+          });
+        });
+      </script>
+    </div>
+  </div>
+  {{/*  <div class="prose col-span-2">
+    <pre>{{ $amounts.Values | jsonify (dict "indent" "  ") }}</pre>
+  </div>  */}}
+{{ end }}

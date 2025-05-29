@@ -4,4 +4,4 @@
   "city" (index . 2 | strings.TrimSpace) 
   "location" (index . 3 | strings.TrimSpace) 
   "event" (index . 4 | strings.TrimSpace) 
-  "price" (index . 5 | strings.TrimSpace) }}
+  "price" (trim (index . 5 | strings.TrimSpace) "€" | float) }}
