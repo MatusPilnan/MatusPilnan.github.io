@@ -1,21 +1,92 @@
 {{ $data := .data }}
 {{ with .page }}
-  {{ $last := index $data 0 | partial "parse-concert.html" }}
+  {{ $last := index $data 0 | partial "concerts/parse.html" }}
+  {{ $evs := slice }}
+  {{ $amounts := newScratch }}
   {{ $events := 1 }}
   {{ range after 1 $data }}
-    {{ $current := partial "parse-concert.html" . }}
+    {{ $current := partial "concerts/parse" . }}
     {{ if $current.event }}
-      {{ if $last.event | neq $current.event }}
+      {{ if $last.event | ne $current.event }}
         {{ $events = add 1 $events }}
+        {{ $evs = append $current $evs  }}
+        {{ $amounts.Add (index (split $current.date ".") 2) 1 }}
       {{ end }}
     {{ else }}
       {{ if $last.event }}
         {{ $events = add 1 $events }}
+        {{ $evs = append $current $evs  }}
+        {{ $amounts.Add (index (split $current.date ".") 2) 1 }}
+      {{ else }}
+        {{ if $last.date | ne $current.date }}
+          {{ $events = add 1 $events }}
+          {{ $evs = append $current $evs  }}
+          {{ $amounts.Add (index (split $current.date ".") 2) 1 }}
+        {{ else }}
+          {{ if $last.location | ne $current.location | or ($last.city | ne $current.city) }}
+            {{ $events = add 1 $events }}
+            {{ $evs = append $current $evs  }}
+            {{ $amounts.Add (index (split $current.date ".") 2) 1 }}
+          {{ end }}
+        {{ end }}
       {{ end }}
     {{ end }}
+    {{ $last = $current }}
   {{ end }}
-  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md">
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md col-span-2">
     <p class="text-sm mb-2">Celkovo podujatí</p>
     <p class="font-extrabold text-4xl">{{ $events }}</p>
+
+    <div class="chart">
+      {{ $id := "chart-total-events" }}
+      <canvas id="{{ $id }}"></canvas>
+      <script type="text/javascript">
+        window.addEventListener("DOMContentLoaded", (event) => {
+          const ctx = document.getElementById("{{ $id }}");
+          const data = {{ $amounts.Values | jsonify | safeJS }};
+          const chart = new Chart(ctx, {
+            type: 'line',
+            options: {
+              plugins: {
+                legend: {
+                  display: false,
+                }
+              },
+              scales: {
+                y: {
+                  display: false,
+
+                },
+                x: {
+                  grid: {
+                    display: false
+                  },
+                  border: {
+                    display: false
+                  }
+                }
+              }
+            },
+            data: {
+              datasets: [{
+                label: 'Podujatia',
+                tension: 0.25,
+                segment: {
+                  borderDash: (ctx) => {
+                    // Make the last segment dashed
+                    if (ctx.p1DataIndex === ctx.p0DataIndex + 1 && 
+                        ctx.p1DataIndex === Object.keys(data).length - 1) {
+                      return [6, 6];
+                    }
+                    return [0, 0]; // No dash for other segments
+                  }
+                },
+                data: data,
+              }]
+            }
+          });
+        });
+      </script>
+    </div>
   </div>
 {{ end }}

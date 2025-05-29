@@ -105,6 +105,9 @@ groupByYear = false
 cardView = false
 cardViewScreenWidth = false
 
+[spotify]
+clientId = "757bdfa319bb4914883b64ff0f6610b1"
+
 [firebase]
 
 [fathomAnalytics]

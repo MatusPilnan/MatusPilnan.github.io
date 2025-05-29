@@ -2,3 +2,4 @@ _site/
 .jekyll-cache
 public
 resources/_gen
+test.http

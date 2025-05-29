@@ -1,0 +1,7 @@
+{{ return dict 
+  "band" (index . 0 | strings.TrimSpace) 
+  "date" (index . 1 | strings.TrimSpace) 
+  "city" (index . 2 | strings.TrimSpace) 
+  "location" (index . 3 | strings.TrimSpace) 
+  "event" (index . 4 | strings.TrimSpace) 
+  "price" (index . 5 | strings.TrimSpace) }}

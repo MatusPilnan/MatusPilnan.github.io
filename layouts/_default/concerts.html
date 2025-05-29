@@ -28,9 +28,31 @@
     {{ errorf "Unable to get remote resource %q" $url }}
   {{ end }}
 {{ end }}
-<div class="my-8 grid grid-cols-3 gap-4">
 
-  {{ with dict "page" . "data" $data }}
+{{ $spotifyToken := "" }}
+{{ if and .Site.Params.spotify.clientId .Site.Params.spotify.clientSecret }}
+{{ $url := "https://accounts.spotify.com/api/token" }}
+{{ $opts := dict 
+  "method" "post"
+  "body" (printf "grant_type=client_credentials&client_id=%s&client_secret=%s" .Site.Params.spotify.clientId .Site.Params.spotify.clientSecret)
+  "headers" (dict  "Content-Type" "application/x-www-form-urlencoded")
+  "key" (print $url (now.Format "2006-01-02-15"))
+}}
+{{ with try (resources.GetRemote $url $opts) }}
+  {{ with .Err }}
+    {{ warnf "Couldn't retrieve Spotify token: %s" . }}
+  {{ else with .Value }}
+    {{ $response := transform.Unmarshal . }}
+    {{ $spotifyToken = $response.access_token }}
+  {{ end }}
+{{ end }}
+{{ else }}
+  {{ warnf "Spotify credentials not provided." }}
+{{ end }}
+
+<div class="my-8 grid grid-cols-6 gap-4">
+
+  {{ with dict "page" . "data" $data "spotifyToken" $spotifyToken }}
 
   {{ partial "concerts/total.html" . }}
 
@@ -38,11 +60,23 @@
 
   {{ partial "concerts/most-recent.html" . }}
 
+  {{ partial "concerts/top-artists.html" . }}
+
   {{ end }}
   
 </div>
-<div class="prose mx-auto">
+{{/*  <div class="prose mx-auto">
   <pre>{{ $data | jsonify (dict "indent" "  ") }}</pre>
   
-</div>
+</div>  */}}
+
+
+
+{{ $chartLib := resources.Get "lib/chart/chart.min.js" }}
+{{ $chartConfig := resources.Get "js/chart.js" }}
+{{ $chartConfig := $chartConfig | resources.Minify }}
+{{ $chartJS := slice $chartLib $chartConfig | resources.Concat "js/chart.bundle.js" | resources.Fingerprint "sha512" }}
+<script defer type="text/javascript" src="{{ $chartJS.RelPermalink }}"
+  integrity="{{ $chartJS.Data.Integrity }}"></script>
+
 {{ end }}
