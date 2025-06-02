@@ -6,7 +6,7 @@
     {{ $total := 0 }}
     {{ range $data }}
       {{ $concert := partial "concerts/parse" . }}
-      {{ $amounts.Add (index (split $concert.date ".") 2) $concert.price }}
+      {{ $amounts.Add (index (string $concert.date.Year)) $concert.price }}
       {{ $total = add $total $concert.price }}
     {{ end }}
     <p class="font-extrabold text-4xl">{{ lang.FormatCurrency 2 "EUR" $total }}</p>
@@ -31,8 +31,11 @@
 
                 },
                 x: {
+                  ticks: {
+                    color: '#fff'
+                  },
                   grid: {
-                    display: false
+                    display: false,
                   },
                   border: {
                     display: false

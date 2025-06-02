@@ -1,0 +1,35 @@
+{{ $data := .data }}
+{{ with .page }}
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md col-span-6">
+    <p class="text-sm mb-2">Všetky koncerty</p>
+    <div>
+      {{ $tableId := "concerts-all" }}
+      <table id="{{ $tableId }}" class="stripe" data-order='[[ 1, "desc" ]]' data-scroll-x="true" data-scroll-y="70vh" data-scroll-collapse="true">
+        <thead class="sticky top-0">
+          <tr>
+            <th>Interpret</th>
+            <th class="dt-left">Dátum</th>
+            <th>Mesto</th>
+            <th>Miesto</th>
+            <th>Podujatie</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $i, $c := $data }}
+          <tr class="odd:bg-neutral-300/25">
+            {{ with partial "concerts/parse" . }}
+              <td>{{ .band }}</td>
+              <td data-order='{{ .date.Format "2006-01-02" }}'>{{ .date.Format "2.1.2006" }}</td>
+              <td>{{ .city }}</td>
+              <td>{{ .location }}</td>
+              <td>{{ .event }}</td>
+            {{ end }}
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+
+    {{ partial "datatable" $tableId }}
+  </div>
+{{ end }}

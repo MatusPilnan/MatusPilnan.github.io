@@ -20,6 +20,7 @@
     {{ range $top }}
       {{ $rankings.Add (string .count) 1 }}
     {{ end }}
+    <div class="max-h-164 overflow-auto">
     <table class="border-collapse">
       <tbody>
         {{ $order := 1 }}
@@ -95,7 +96,7 @@
                 {{ end }}
               </div>
               <p class="text-sm">
-                {{ .count }}x, naposledy {{ .lastConcert.date }} ({{ .lastConcert.city }}{{ with default .lastConcert.location .lastConcert.event }}, {{.}}{{ end }})
+                {{ .count }}x, naposledy {{ .lastConcert.date.Format "2.1.2006" }} ({{ .lastConcert.city }}{{ with default .lastConcert.location .lastConcert.event }}, {{.}}{{ end }})
               </p>
             {{ if $spotifyArtist }}
             </a>
@@ -107,13 +108,6 @@
         {{ end }}
       </tbody>
     </table>
-    {{/*  <ol class="grid gap-4">
-      <li class="py-2 grid grid-rows-subgrid grid-cols-[2rem_1fr]">
-        
-
-        
-      </li>  
-      {{ end }}
-    </ol>  */}}
+    </div>
   </div>
 {{ end }}

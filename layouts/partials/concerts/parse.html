@@ -1,7 +1,15 @@
-{{ return dict 
+{{ $concert := dict 
   "band" (index . 0 | strings.TrimSpace) 
   "date" (index . 1 | strings.TrimSpace) 
   "city" (index . 2 | strings.TrimSpace) 
   "location" (index . 3 | strings.TrimSpace) 
   "event" (index . 4 | strings.TrimSpace) 
   "price" (trim (index . 5 | strings.TrimSpace) "€" | float) }}
+
+{{ $date := split $concert.date "." | collections.Reverse }}
+{{ $date = apply $date "int" "." }} 
+{{ $date = printf "%d-%02d-%02d" (index $date 0) (index $date 1) (index $date 2) | time }}
+
+{{ $concert = dict "date" $date | merge $concert }}
+
+{{ return $concert }}

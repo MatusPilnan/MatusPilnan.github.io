@@ -6,7 +6,7 @@
     {{ $amounts := newScratch }}
     {{ range $data }}
       {{ $concert := partial "concerts/parse" . }}
-      {{ $amounts.Add (index (split $concert.date ".") 2) 1 }}
+      {{ $amounts.Add (index (string $concert.date.Year)) 1 }}
     {{ end }}
     <div class="chart">
       {{ $id := "chart-total-concerts" }}
@@ -29,8 +29,11 @@
 
                 },
                 x: {
+                  ticks: {
+                    color: '#fff'
+                  },
                   grid: {
-                    display: false
+                    display: false,
                   },
                   border: {
                     display: false
