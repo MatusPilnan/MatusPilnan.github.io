@@ -1,0 +1,232 @@
+.racing-bars {
+  --base-font-size: max(1vw, 12px);
+  --text-font-size: calc(var(--base-font-size));
+  --title-font-size: calc(var(--base-font-size) * 2);
+  --caption-font-size: calc(var(--base-font-size) * 1.5);
+  --counter-font-size: calc(var(--base-font-size) * 2);
+  --controls-font-size: calc(var(--base-font-size) * 1.5);
+}
+
+.racing-bars text {
+  font-family:
+    Roboto
+    Open Sans,
+    sans-serif;
+  font-size: var(--text-font-size);
+}
+
+.racing-bars text.title {
+  font-size: var(--title-font-size);
+  font-weight: 500;
+}
+
+.racing-bars text.subTitle {
+  font-weight: 500;
+}
+
+.racing-bars text.caption {
+  font-size: var(--caption-font-size);
+  font-weight: 400;
+}
+
+.racing-bars text.legend-text {
+  user-select: none;
+  user-select: none;
+  user-select: none;
+  user-select: none;
+  user-select: none;
+}
+
+/* .racing-bars text.label {
+  font-weight: 600;
+} */
+
+.racing-bars text.label.hidden {
+  visibility: hidden;
+}
+
+.racing-bars text.valueLabel {
+  font-weight: 300;
+}
+
+.racing-bars text.dateCounterText {
+  font-size: var(--counter-font-size);
+  font-weight: 700;
+}
+
+.racing-bars .xAxis .tick:nth-child(2) text {
+  text-anchor: start;
+}
+
+.racing-bars .tick line {
+  shape-rendering: CrispEdges;
+}
+
+.racing-bars path.domain {
+  display: none;
+}
+
+.racing-bars {
+  position: relative;
+}
+
+.racing-bars .controls {
+  /*  position is set dynamically in renderer.ts */
+  display: flex;
+}
+
+.racing-bars .controls div,
+.racing-bars .overlay div {
+  align-items: center;
+  border-radius: 5px;
+  border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.racing-bars .controls div {
+  height: 10vw;
+  max-height: 32px;
+  max-width: 32px;
+  width: 10vw;
+}
+
+.racing-bars .controls svg {
+  height: 7vw;
+  margin: 5px auto;
+  max-height: 24px;
+  max-width: 24px;
+  width: 7vw;
+}
+
+.racing-bars .overlay {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.racing-bars .overlay div {
+  align-items: center;
+  border-radius: 100px;
+  border-radius: 100px;
+  border-radius: 100px;
+  display: flex;
+  height: 20vw;
+  justify-content: center;
+  position: relative;
+  max-height: 200px;
+  max-width: 200px;
+  width: 20vw;
+}
+
+.racing-bars .overlay svg {
+  height: 50%;
+  width: 50%;
+}
+
+/* .racing-bars {
+  background-color: #1e1e1e;
+} */
+
+.racing-bars text.title {
+  fill: #fafafa;
+}
+
+.racing-bars text.subTitle {
+  fill: #ccc;
+}
+
+.racing-bars text.dateCounterText {
+  fill: #ccc;
+  opacity: 1;
+}
+
+.racing-bars text.caption {
+  fill: #ccc;
+}
+
+.racing-bars .halo {
+  fill: #313639;
+  opacity: 1;
+  stroke: #313639;
+  stroke-linejoin: round;
+  stroke-width: 10;
+}
+
+.racing-bars text.legend-text {
+  fill: #fafafa;
+}
+
+.racing-bars text.label {
+  fill: rgb(var(--color-neutral-900));
+}
+
+.racing-bars text.label.outside-bars {
+  fill: #fafafa;
+}
+
+.racing-bars text.valueLabel {
+  fill: rgb(var(--color-neutral-900));
+}
+
+.dark .racing-bars text.valueLabel {
+  fill: white;
+}
+
+.racing-bars .tick text {
+  fill: rgba(var(--color-neutral-600), 0.25);
+}
+
+.racing-bars .tick line {
+  shape-rendering: CrispEdges;
+  stroke: rgba(var(--color-neutral-600), 0.25);
+}
+
+.dark .racing-bars .tick text {
+  fill: rgba(var(--color-neutral-300), 0.25);
+}
+
+.dark .racing-bars .tick line {
+  stroke: rgba(var(--color-neutral-300), 0.25);
+}
+
+.racing-bars .tick line.origin {
+  stroke: #aaa;
+}
+
+.racing-bars .controls div,
+.racing-bars .overlay div {
+  background: #777;
+  border: 1px solid black;
+  color: #fff;
+  opacity: 0.5;
+}
+
+.racing-bars .controls div:hover,
+.racing-bars .overlay div:hover {
+  background: #aaa;
+  color: black;
+}
+
+.racing-bars .overlay {
+  background-color: black;
+  opacity: 0.7;
+}
+
+.racing-bars .highlight {
+  fill: #ff2727 !important;
+}
+
+.racing-bars .selected {
+  fill: #d12020 !important;
+  stroke: #777 !important;
+  stroke-width: 1 !important;
+}

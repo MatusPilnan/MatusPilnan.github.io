@@ -3,3 +3,5 @@ _site/
 public
 resources/_gen
 test.http
+node_modules
+

@@ -1,0 +1,53 @@
+{{ $data := .data }}
+{{ $spotifyToken := .spotifyToken }}
+{{ with .page }}
+  {{ $topN := default .Params.topArtists .Params.topArtistsRace }}
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md lg:col-span-6">
+    <p class="text-sm mb-2">Top {{ $topN }} interpretov v čase</p>
+
+    {{ $raceId := "race-top-artists" }}
+    {{ $race := slice }}
+    {{ $artists := newScratch }}
+    {{ $first := index $data 0 | partial "concerts/parse" }}
+    {{ $bucket := delimit (slice ($first.date.Format "2006-01") "01") "-" | time.AsTime }}
+    {{ $bucket = $bucket.AddDate 0 1 0 }}
+    {{ $concert := false }}
+    {{ range $data }}
+      {{ $concert = partial "concerts/parse" . }}
+      {{ if $concert.date.After $bucket }}
+        {{ $race = $race | append (dict "date" ($concert.date.Format "2006-01-02") | merge $artists.Values) }}
+        {{ $bucket = $bucket.AddDate 0 1 0 }}
+      {{ end }}
+
+      {{ $artists.Add $concert.band 1 }}
+    {{ end }}
+
+    {{ $race = $race | append (dict "date" ($concert.date.Format "2006-01-02") | merge $artists.Values) }}
+
+    <div class="h-[50vh] racing-bars" id="{{ $raceId }}"></div>
+    
+    {{ $js := resources.Get "lib/racing-bars.umd.js" }}
+    <script defer src="{{ $js.RelPermalink }}"></script>
+
+    {{ $css := resources.Get "lib/racing-bars.css" | minify }}
+    <link rel="stylesheet" type="text/css" href="{{ $css.RelPermalink }}">
+
+    <script>
+      const topN = {{ $topN }};
+      const data = {{ $race | jsonify | safeJS }};
+
+      window.addEventListener("DOMContentLoaded", () => {
+        racingBars.race(data, "#{{ $raceId }}", {
+          topN: topN,
+          autorun: false,
+          fillDateGapsInterval: 'month',
+          fillDateGapsValue: 'last',
+          valueDecimals: 0,
+          controlButtons: 'all',
+          colorSeed: 42,
+          injectStyles: false
+        });
+      })
+    </script>
+  </div>
+{{ end }}
