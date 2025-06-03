@@ -1,0 +1,113 @@
+{{ $data := .data }}
+{{ $spotifyToken := .spotifyToken }}
+{{ with .page }}
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md sm:col-span-2 lg:col-span-3 row-span-2">
+    <p class="text-sm mb-2">{{ T "concerts.charts.top-artists.title" .Params.topArtists }}</p>
+
+    {{ $artists := newScratch }}
+    {{ $lastShows := newScratch }}
+    {{ range $data }}
+      {{ $concert := partial "concerts/parse" . }}
+      {{ $artists.Add $concert.artist 1 }}
+      {{ $lastShows.Set $concert.artist $concert }}
+    {{ end }}
+    {{ $top := slice }}
+    {{ range $artist, $count := $artists.Values }}
+      {{ $top = append (dict "artist" $artist "count" $count "lastConcert" ($lastShows.Get $artist)) $top }}
+    {{ end }}
+    {{ $top = sort $top "count" "desc" | first .Params.topArtists }}
+    {{ $rankings := newScratch }}
+    {{ range $top }}
+      {{ $rankings.Add (string .count) 1 }}
+    {{ end }}
+    <div class="max-h-164 overflow-auto">
+    <table class="border-collapse">
+      <tbody>
+        {{ $order := 1 }}
+        {{ $t := .Params.topArtists }}
+        {{ $lastCount := -1 }}
+        {{ range $i, $artist := $top }}
+        <tr class="{{ if add 1 $i | gt $t }} border-b-[1px] {{ end }} border-neutral-300 dark:border-neutral-600">
+          {{ if .count | ne $lastCount }}
+          <td rowspan="{{ $rankings.Get (string .count) }}" class="text-sm p-2">
+            {{ $order }}.
+          </td>
+          {{ end }}
+          {{ $order = add $order 1 }}
+          {{ $lastCount = .count }}
+          <td class="flex items-center col-start-2 p-2">
+            {{ $alt := split .artist " " }}
+            {{ $alt = apply $alt "first" "1" "." }}
+            {{ $alt = delimit $alt "" }}
+
+            {{ $src := "" }}
+            {{ $spotifyArtist := false }}
+            {{ if $spotifyToken }}
+              {{ $qs := printf "artist:%s" .artist | dict "type" "artist" "q" | querify }}
+              {{ $searchUrl := printf "https://api.spotify.com/v1/search?%s" $qs }}
+              {{ $opts := dict "headers" (dict "Authorization" (printf "Bearer %s" $spotifyToken)) }}
+              {{ with try (resources.GetRemote $searchUrl $opts) }}
+                {{ with .Err }}
+                  {{ warnf "Spotify search for '%s' failed: %s \n\n%s\n\n" $artist.artist . $spotifyToken }}
+                {{ else with .Value }}
+                  {{ $spotifyResult := transform.Unmarshal . }}
+                  {{ $spotifyArtist = index $spotifyResult.artists.items 0 }}
+
+                  {{ if $spotifyArtist.name | ne $artist.artist }}
+                    {{ $exact := where $spotifyResult.artists.items "name" $artist.artist }}
+                    {{ if $exact }}
+                      {{ $spotifyArtist = index $exact 0 }}
+                    {{ end }}
+                  {{ end }}
+
+                  {{ if not $src }}
+                    {{ with try (index $spotifyArtist.images 0 "url" | resources.GetRemote) }}
+                      {{ with .Err }}
+                        {{ warnf "Failed to download artist image for '%s': %s" $artist.artist . }}
+                      {{ else with .Value }}
+                        {{ $src = .RelPermalink }}
+                      {{ end }}
+                    {{ end }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+              
+            {{ end }}
+
+
+            <img 
+              src="{{ $src }}" 
+              alt="{{ $alt }}" 
+              class="uppercase rounded-full size-12 bg-neutral-300/75 dark:bg-neutral-600/75 flex items-center justify-center text-center text-xs self-center col-start-2 col-span-2">
+            
+            {{- with $spotifyArtist -}}
+            <a href="{{ .external_urls.spotify }}" target="_blank" class="pl-4 transition-colors hover:text-primary-600 dark:hover:text-primary-300 group">
+            {{ else }}
+            <div class="pl-4">
+            {{ end }}
+              <div class="font-extrabold text-xl flex items-center">
+                <span>
+                  {{ .artist -}}
+                </span>
+                {{- if $spotifyArtist -}}
+                <div class="scale-75 ml-1 text-neutral-300 dark:text-neutral-600 transition-colors group-hover:text-primary-600 dark:group-hover:text-primary-300">
+                  {{ partial "icon" "spotify" }}
+                </div>
+                {{ end }}
+              </div>
+              <p class="text-sm">
+                {{ T "concerts.charts.top-artists.count" .count }}, {{ T "concerts.charts.top-artists.last" }} {{ .lastConcert.date.Format "2.1.2006" }} ({{ .lastConcert.city }}{{ with default .lastConcert.location .lastConcert.event }}, {{.}}{{ end }})
+              </p>
+            {{ if $spotifyArtist }}
+            </a>
+            {{ else }}
+            </div>
+            {{ end }}
+          </td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+    </div>
+  </div>
+{{ end }}

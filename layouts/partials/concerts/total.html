@@ -1,0 +1,69 @@
+{{ $data := .data }}
+{{ with .page }}
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md lg:col-span-2">
+    <p class="text-sm mb-2">{{ T "concerts.charts.total.title" }}</p>
+    <p class="font-extrabold text-4xl">{{ len $data }}</p>
+    {{ $amounts := newScratch }}
+    {{ range $data }}
+      {{ $concert := partial "concerts/parse" . }}
+      {{ $amounts.Add (index (string $concert.date.Year)) 1 }}
+    {{ end }}
+    <div class="chart">
+      {{ $id := "chart-total-concerts" }}
+      <canvas id="{{ $id }}"></canvas>
+      <script type="text/javascript">
+        window.addEventListener("DOMContentLoaded", (event) => {
+          const ctx = document.getElementById("{{ $id }}");
+          const data = {{ $amounts.Values | jsonify | safeJS }};
+          const chart = new Chart(ctx, {
+            type: 'line',
+            options: {
+              plugins: {
+                legend: {
+                  display: false,
+                }
+              },
+              scales: {
+                y: {
+                  display: false,
+
+                },
+                x: {
+                  ticks: {
+                    color: '#fff'
+                  },
+                  grid: {
+                    display: false,
+                  },
+                  border: {
+                    display: false
+                  }
+                }
+              }
+            },
+            data: {
+              datasets: [{
+                label: '{{ T "concerts.charts.total.label" }}',
+                tension: 0.25,
+                segment: {
+                  borderDash: (ctx) => {
+                    // Make the last segment dashed
+                    if (ctx.p1DataIndex === ctx.p0DataIndex + 1 && 
+                        ctx.p1DataIndex === Object.keys(data).length - 1) {
+                      return [6, 6];
+                    }
+                    return [0, 0]; // No dash for other segments
+                  }
+                },
+                data: data,
+              }]
+            }
+          });
+        });
+      </script>
+    </div>
+  </div>
+  {{/*  <div class="prose col-span-2">
+    <pre>{{ $amounts.Values | jsonify (dict "indent" "  ") }}</pre>
+  </div>  */}}
+{{ end }}

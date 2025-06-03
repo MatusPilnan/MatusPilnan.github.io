@@ -1,0 +1,29 @@
+{{ $data := .data }}
+{{ with .page }}
+  {{ $last := dict }}
+  {{ range last 1 $data }}
+    {{ $last = partial "concerts/parse" . }}
+  {{ end }}
+  {{ $lastFew := slice }}
+  {{ range last (add 2 .Params.limitRecentArtists) $data }}
+    {{ $lastFew = append (partial "concerts/parse" .) $lastFew }}
+  {{ end }}
+  {{ $lastEvent := $lastFew }}
+  {{ if $last.event }}
+    {{ $lastFew = where $lastFew "event" $last.event }}
+  {{ else }}
+    {{ $lastFew = where $lastFew "date" $last.date }}
+    {{ $lastFew = where $lastFew "city" $last.city }}
+    {{ $lastFew = where $lastFew "location" $last.location }}
+    {{ $lastFew = collections.Reverse $lastFew | after 1 | collections.Reverse }}
+  {{ end }}
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md lg:col-span-3">
+    <p class="text-sm mb-2">{{ T "concerts.charts.most-recent.title" }}</p>
+    <p class="font-extrabold text-2xl">{{ $last.event | default $last.artist }}</p>
+    <p class="text-sm">{{ $last.date.Format "2.1.2006" }}<span class="px-2 text-primary-500">&middot;</span>{{ $last.city }}{{ with $last.location }}<span class="px-2 text-primary-500">&middot;</span>{{ . }}{{ end }}</p>
+    {{ $artists := apply $lastFew "index" "." "artist" | collections.Reverse }}
+    {{ if $artists }}
+      <p class="mt-4">{{ T "concerts.charts.most-recent.with" }} {{ delimit (first .Params.limitRecentArtists $artists) ", " }}{{ if len $artists | lt .Params.limitRecentArtists }} {{ T "concerts.charts.most-recent.and-more" }}{{ end }}</p>
+    {{ end }}
+  </div>
+{{ end }}

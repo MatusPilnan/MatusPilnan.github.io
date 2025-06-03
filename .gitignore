@@ -2,3 +2,6 @@ _site/
 .jekyll-cache
 public
 resources/_gen
+test.http
+node_modules
+

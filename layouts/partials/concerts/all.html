@@ -1,0 +1,35 @@
+{{ $data := .data }}
+{{ with .page }}
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md sm:col-span-2 lg:col-span-6">
+    <p class="text-sm mb-2">{{ T "concerts.charts.all.title" }}</p>
+    <div>
+      {{ $tableId := "concerts-all" }}
+      <table id="{{ $tableId }}" class="stripe" data-order='[[ 1, "desc" ]]' data-scroll-x="true" data-scroll-y="70vh" data-scroll-collapse="true">
+        <thead class="sticky top-0">
+          <tr>
+            <th>{{ T "concerts.charts.all.headers.artist" }}</th>
+            <th class="dt-left">{{ T "concerts.charts.all.headers.date" }}</th>
+            <th>{{ T "concerts.charts.all.headers.city" }}</th>
+            <th>{{ T "concerts.charts.all.headers.location" }}</th>
+            <th>{{ T "concerts.charts.all.headers.event" }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{ range $i, $c := $data }}
+          <tr class="odd:bg-neutral-300/25">
+            {{ with partial "concerts/parse" . }}
+              <td>{{ .artist }}</td>
+              <td data-order='{{ .date.Format "2006-01-02" }}'>{{ .date.Format "2.1.2006" }}</td>
+              <td>{{ .city }}</td>
+              <td>{{ .location }}</td>
+              <td>{{ .event }}</td>
+            {{ end }}
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+
+    {{ partial "datatable" $tableId }}
+  </div>
+{{ end }}
