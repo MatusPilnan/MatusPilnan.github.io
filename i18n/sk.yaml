@@ -71,3 +71,43 @@ shortcode:
 
 recent:
   show_more: "Zobraziť ďalšie"
+
+concerts:
+  charts:
+    total:
+      title: Celkovo vystúpení
+      label: Koncerty
+    total-events:
+      title: Celkovo podujatí
+      label: Podujatia
+    total-spent:
+      title: Celkovo minuté
+      label: Výdavky
+    top-artists:
+      title:
+        one: Top interpret
+        few: Top {{ .Count }} interpreti
+        other: Top {{ .Count }} interpretov
+      count: '{{ .Count }}x'
+      last: naposledy
+    most-recent:
+      title: Ostatný koncert
+      with: w/
+      and-more: a ďalší.
+    ranking:
+      title: Rebríček
+      label: Koncerty
+    race-top-artists:
+      title: 
+        one: Top interpret v čase
+        few: Top {{ .Count }} interpreti v čase
+        other: Top {{ .Count }} interpretov v čase
+    all:
+      title: Všetky koncerty
+      headers:
+        artist: Interpret
+        date: Dátum
+        city: Mesto
+        location: Miesto
+        event: Podujatie
+

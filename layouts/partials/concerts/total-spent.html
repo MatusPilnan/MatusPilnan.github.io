@@ -1,7 +1,7 @@
 {{ $data := .data }}
 {{ with .page }}
   <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md lg:col-span-2">
-    <p class="text-sm mb-2">Celkovo minuté</p>
+    <p class="text-sm mb-2">{{ T "concerts.charts.total-spent.title" }}</p>
     {{ $amounts := newScratch }}
     {{ $total := 0 }}
     {{ range $data }}
@@ -45,7 +45,7 @@
             },
             data: {
               datasets: [{
-                label: 'Výdavky',
+                label: '{{ T "concerts.charts.total-spent.label" }}',
                 tension: 0.25,
                 tooltip: {
                   callbacks: {

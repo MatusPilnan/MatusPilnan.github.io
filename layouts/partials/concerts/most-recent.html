@@ -18,12 +18,12 @@
     {{ $lastFew = collections.Reverse $lastFew | after 1 | collections.Reverse }}
   {{ end }}
   <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md lg:col-span-3">
-    <p class="text-sm mb-2">Ostatný koncert</p>
+    <p class="text-sm mb-2">{{ T "concerts.charts.most-recent.title" }}</p>
     <p class="font-extrabold text-2xl">{{ $last.event | default $last.band }}</p>
     <p class="text-sm">{{ $last.date.Format "2.1.2006" }}<span class="px-2 text-primary-500">&middot;</span>{{ $last.city }}{{ with $last.location }}<span class="px-2 text-primary-500">&middot;</span>{{ . }}{{ end }}</p>
     {{ $bands := apply $lastFew "index" "." "band" | collections.Reverse }}
     {{ if $bands }}
-      <p class="mt-4">w/ {{ delimit (first .Params.limitRecentArtists $bands) ", " }}{{ if len $bands | lt .Params.limitRecentArtists }} a ďalší.{{ end }}</p>
+      <p class="mt-4">{{ T "concerts.charts.most-recent.with" }} {{ delimit (first .Params.limitRecentArtists $bands) ", " }}{{ if len $bands | lt .Params.limitRecentArtists }} {{ T "concerts.charts.most-recent.and-more" }}{{ end }}</p>
     {{ end }}
   </div>
 {{ end }}

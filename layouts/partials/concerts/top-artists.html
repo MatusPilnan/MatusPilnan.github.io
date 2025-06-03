@@ -2,7 +2,7 @@
 {{ $spotifyToken := .spotifyToken }}
 {{ with .page }}
   <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md sm:col-span-2 lg:col-span-3 row-span-2">
-    <p class="text-sm mb-2">Top {{ .Params.topArtists }} interpretov</p>
+    <p class="text-sm mb-2">{{ T "concerts.charts.top-artists.title" .Params.topArtists }}</p>
 
     {{ $artists := newScratch }}
     {{ $lastShows := newScratch }}
@@ -96,7 +96,7 @@
                 {{ end }}
               </div>
               <p class="text-sm">
-                {{ .count }}x, naposledy {{ .lastConcert.date.Format "2.1.2006" }} ({{ .lastConcert.city }}{{ with default .lastConcert.location .lastConcert.event }}, {{.}}{{ end }})
+                {{ T "concerts.charts.top-artists.count" .count }}, {{ T "concerts.charts.top-artists.last" }} {{ .lastConcert.date.Format "2.1.2006" }} ({{ .lastConcert.city }}{{ with default .lastConcert.location .lastConcert.event }}, {{.}}{{ end }})
               </p>
             {{ if $spotifyArtist }}
             </a>

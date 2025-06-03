@@ -1,7 +1,7 @@
 {{ $data := .data }}
 {{ with .page }}
   <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md sm:col-span-2 lg:col-span-3">
-    <p class="text-sm mb-2">Rebríček</p>
+    <p class="text-sm mb-2">{{ T "concerts.charts.ranking.title" }}</p>
 
     {{ $amounts := newScratch }}
     {{ range $data }}
@@ -64,7 +64,7 @@
               },
               data: {
                 datasets: [{
-                  label: 'Koncerty',
+                  label: '{{ T "concerts.charts.ranking.label" }}',
                   tension: 0.25,
                   data: data,
                 }]
