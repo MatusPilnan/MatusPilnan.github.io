@@ -6,7 +6,7 @@
     {{ $amounts := newScratch }}
     {{ range $data }}
       {{ $concert := partial "concerts/parse" . }}
-      {{ $amounts.Add $concert.band 1 }}
+      {{ $amounts.Add $concert.artist 1 }}
     {{ end }}
 
     {{ $dataset := slice }}

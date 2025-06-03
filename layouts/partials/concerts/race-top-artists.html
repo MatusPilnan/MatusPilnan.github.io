@@ -19,7 +19,7 @@
         {{ $bucket = $bucket.AddDate 0 1 0 }}
       {{ end }}
 
-      {{ $artists.Add $concert.band 1 }}
+      {{ $artists.Add $concert.artist 1 }}
     {{ end }}
 
     {{ $race = $race | append (dict "date" ($concert.date.Format "2006-01-02") | merge $artists.Values) }}

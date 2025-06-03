@@ -18,7 +18,7 @@
           {{ range $i, $c := $data }}
           <tr class="odd:bg-neutral-300/25">
             {{ with partial "concerts/parse" . }}
-              <td>{{ .band }}</td>
+              <td>{{ .artist }}</td>
               <td data-order='{{ .date.Format "2006-01-02" }}'>{{ .date.Format "2.1.2006" }}</td>
               <td>{{ .city }}</td>
               <td>{{ .location }}</td>
