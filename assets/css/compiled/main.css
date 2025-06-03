@@ -2885,6 +2885,11 @@ body.zen-mode-enable {
       line-height: var(--tw-leading, var(--text-lg--line-height));
     }
   }
+  .md\:col-span-1 {
+    @media (width >= 853px) {
+      grid-column: span 1 / span 1;
+    }
+  }
   .md\:mt-0 {
     @media (width >= 853px) {
       margin-top: calc(var(--spacing) * 0);
@@ -3008,6 +3013,11 @@ body.zen-mode-enable {
   .lg\:col-span-6 {
     @media (width >= 1024px) {
       grid-column: span 6 / span 6;
+    }
+  }
+  .lg\:row-span-2 {
+    @media (width >= 1024px) {
+      grid-row: span 2 / span 2;
     }
   }
   .lg\:m-0 {

@@ -2,7 +2,7 @@
 {{ $spotifyToken := .spotifyToken }}
 {{ with .page }}
   {{ $topN := default .Params.topArtists .Params.topArtistsRace }}
-  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md lg:col-span-6">
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md sm:col-span-2 lg:col-span-6">
     <p class="text-sm mb-2">Top {{ $topN }} interpretov v čase</p>
 
     {{ $raceId := "race-top-artists" }}

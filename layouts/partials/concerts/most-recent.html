@@ -17,7 +17,7 @@
     {{ $lastFew = where $lastFew "location" $last.location }}
     {{ $lastFew = collections.Reverse $lastFew | after 1 | collections.Reverse }}
   {{ end }}
-  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md col-span-3">
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md lg:col-span-3">
     <p class="text-sm mb-2">Ostatný koncert</p>
     <p class="font-extrabold text-2xl">{{ $last.event | default $last.band }}</p>
     <p class="text-sm">{{ $last.date.Format "2.1.2006" }}<span class="px-2 text-primary-500">&middot;</span>{{ $last.city }}{{ with $last.location }}<span class="px-2 text-primary-500">&middot;</span>{{ . }}{{ end }}</p>
