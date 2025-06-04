@@ -1,5 +1,6 @@
 {{ $data := .data }}
 {{ $spotifyToken := .spotifyToken }}
+{{ $page := .page }}
 {{ with .page }}
   <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md sm:col-span-2 lg:col-span-3 row-span-2">
     <p class="text-sm mb-2">{{ T "concerts.charts.top-artists.title" .Params.topArtists }}</p>
@@ -43,35 +44,24 @@
             {{ $src := "" }}
             {{ $spotifyArtist := false }}
             {{ if $spotifyToken }}
-              {{ $qs := printf "artist:%s" .artist | dict "type" "artist" "limit" 50 "q" | querify }}
-              {{ $searchUrl := printf "https://api.spotify.com/v1/search?%s" $qs }}
-              {{ $opts := dict "headers" (dict "Authorization" (printf "Bearer %s" $spotifyToken)) }}
-              {{ with try (resources.GetRemote $searchUrl $opts) }}
-                {{ with .Err }}
-                  {{ warnf "[Spotify] Spotify search for '%s' failed: %s" $artist.artist . }}
-                {{ else with .Value }}
-                  {{ $spotifyResult := transform.Unmarshal . }}
-                  {{ $spotifyArtist = index $spotifyResult.artists.items 0 }}
 
-                  {{ if $spotifyArtist.name | ne $artist.artist }}
-                    {{ warnf "[Spotify] Spotify search top result is a partial match: '%s' != '%s'. Returned total %.0f items." $artist.artist $spotifyArtist.name $spotifyResult.artists.total }}
-                    {{ $exact := where $spotifyResult.artists.items "name" $artist.artist }}
-                    {{ if $exact }}
-                      {{ $spotifyArtist = index $exact 0 }}
-                      {{ warnf "[Spotify] Found %d exact matches for '%s', using the first one: '%s'." (len $exact) $artist.artist $spotifyArtist.name }}
-                    {{ else }}
-                      {{ warnf "[Spotify] No exact matches found in returned items: %s" (apply $spotifyResult.artists.items "index" "." "name" | jsonify (dict "indent" " ")) }} 
-                    {{ end }}
-                  {{ end }}
 
-                  {{ if not $src }}
-                    {{ with try (index $spotifyArtist.images 0 "url" | resources.GetRemote) }}
-                      {{ with .Err }}
-                        {{ warnf "Failed to download artist image for '%s': %s" $artist.artist . }}
-                      {{ else with .Value }}
-                        {{ $src = .RelPermalink }}
-                      {{ end }}
-                    {{ end }}
+              {{ with index $page.Site.Data.artists (urlize .artist) }}
+                {{ with dict "artist" . "name" $artist.artist "spotifyToken" $spotifyToken | partial "concerts/spotify/get-artist" }}
+                  {{ $spotifyArtist = . }}
+                {{ end }}
+              {{ end }}
+
+              {{ if not $spotifyArtist }}
+                {{ $spotifyArtist = dict "artist" . "spotifyToken" $spotifyToken | partial "concerts/spotify/search" }}
+              {{ end }}
+
+              {{ if not $src }}
+                {{ with try (index $spotifyArtist.images 0 "url" | resources.GetRemote) }}
+                  {{ with .Err }}
+                    {{ warnf "Failed to download artist image for '%s': %s" $artist.artist . }}
+                  {{ else with .Value }}
+                    {{ $src = .RelPermalink }}
                   {{ end }}
                 {{ end }}
               {{ end }}

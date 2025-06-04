@@ -23,7 +23,6 @@
     {{ $opts := dict "delimiter" "," }}
     {{ $data = . | transform.Unmarshal $opts | after 1 }}
     {{ $data = apply $data "first" "6" "." }}
-    {{/*  {{ $data = first 200 $data }}  */}}
   {{ else }}
     {{ errorf "Unable to get remote resource %q" $url }}
   {{ end }}

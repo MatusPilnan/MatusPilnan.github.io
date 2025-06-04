@@ -348,6 +348,9 @@ body.zen-mode-enable {
   .top-35 {
     top: calc(var(--spacing) * 35);
   }
+  .top-90 {
+    top: calc(var(--spacing) * 90);
+  }
   .top-\[110vh\] {
     top: 110vh;
   }
