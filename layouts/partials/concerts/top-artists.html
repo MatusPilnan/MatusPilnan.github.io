@@ -48,15 +48,19 @@
               {{ $opts := dict "headers" (dict "Authorization" (printf "Bearer %s" $spotifyToken)) }}
               {{ with try (resources.GetRemote $searchUrl $opts) }}
                 {{ with .Err }}
-                  {{ warnf "Spotify search for '%s' failed: %s \n\n%s\n\n" $artist.artist . $spotifyToken }}
+                  {{ warnf "[Spotify] Spotify search for '%s' failed: %s \n\n%s\n\n" $artist.artist . $spotifyToken }}
                 {{ else with .Value }}
                   {{ $spotifyResult := transform.Unmarshal . }}
                   {{ $spotifyArtist = index $spotifyResult.artists.items 0 }}
 
                   {{ if $spotifyArtist.name | ne $artist.artist }}
+                    {{ warnf "[Spotify] Spotify search top result is a partial match: '%s' != '%s'" $artist.artist $spotifyArtist.name }}
                     {{ $exact := where $spotifyResult.artists.items "name" $artist.artist }}
                     {{ if $exact }}
                       {{ $spotifyArtist = index $exact 0 }}
+                      {{ warnf "[Spotify] Found %d exact matches for '%s', using the first one: '%s'." (len $exact) $artist.artist $spotifyArtist.name }}
+                    {{ else }}
+                      {{ warnf "[Spotify] No exact matches found in returned items: %s" (apply $spotifyResult.artists.items "index" "." "name" | jsonify (dict "indent" " ")) }} 
                     {{ end }}
                   {{ end }}
 
@@ -78,7 +82,7 @@
             <img 
               src="{{ $src }}" 
               alt="{{ $alt }}" 
-              class="uppercase rounded-full size-12 bg-neutral-300/75 dark:bg-neutral-600/75 flex items-center justify-center text-center text-xs self-center col-start-2 col-span-2">
+              class="uppercase rounded-full min-w-12 size-12 bg-neutral-300/75 dark:bg-neutral-600/75 flex items-center justify-center text-center text-xs self-center col-start-2 col-span-2">
             
             {{- with $spotifyArtist -}}
             <a href="{{ .external_urls.spotify }}" target="_blank" class="pl-4 transition-colors hover:text-primary-600 dark:hover:text-primary-300 group">
