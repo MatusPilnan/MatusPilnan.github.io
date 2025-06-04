@@ -54,7 +54,7 @@
                   {{ $spotifyArtist = index $spotifyResult.artists.items 0 }}
 
                   {{ if $spotifyArtist.name | ne $artist.artist }}
-                    {{ warnf "[Spotify] Spotify search top result is a partial match: '%s' != '%s'. Returned total %d items." $artist.artist $spotifyArtist.namev.total }}
+                    {{ warnf "[Spotify] Spotify search top result is a partial match: '%s' != '%s'. Returned total %.0f items." $artist.artist $spotifyArtist.name $spotifyResult.artists.total }}
                     {{ $exact := where $spotifyResult.artists.items "name" $artist.artist }}
                     {{ if $exact }}
                       {{ $spotifyArtist = index $exact 0 }}
