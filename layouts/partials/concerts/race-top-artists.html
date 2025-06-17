@@ -15,7 +15,7 @@
     {{ range $data }}
       {{ $concert = partial "concerts/parse" . }}
       {{ if $concert.date.After $bucket }}
-        {{ $race = $race | append (dict "date" ($concert.date.Format "2006-01-02") | merge $artists.Values) }}
+        {{ $race = $race | append (dict "date" ($bucket.Format "2006-01-02") | merge $artists.Values) }}
         {{ $bucket = $bucket.AddDate 0 1 0 }}
       {{ end }}
 
@@ -25,6 +25,28 @@
     {{ $race = $race | append (dict "date" ($concert.date.Format "2006-01-02") | merge $artists.Values) }}
 
     <div class="h-[50vh] racing-bars" id="{{ $raceId }}"></div>
+
+    <div class="w-full my-4">
+      <input type="range" class="w-full" min="0" max="100" value="0" aria-label="Control visualisation" />
+
+      {{ $endDate   := time.AsTime (len $race | add -1 | index $race).date }}
+      {{ $startDate := time.AsTime (index $race 0).date }}
+      {{ $timespan := $endDate.Sub $startDate }}
+
+      {{ $dates := slice $startDate }}
+      {{ $segments := 4 }}
+      {{ $increment := div $timespan.Hours $segments }}
+      {{ range seq $segments }}
+        {{ $dates = $dates | append (mul $increment . | duration "h" | $startDate.Add) }}
+      {{ end }}
+      <div class="flex justify-evenly relative">
+        {{ range $dates }}
+          <span class="first:absolute last:absolute first:left-0 last:right-0">
+            {{ .Format "01/2006" }}
+          </span>
+        {{ end }}
+      </div>
+    </div>
     
     {{ $js := resources.Get "lib/racing-bars.umd.js" }}
     <script defer src="{{ $js.RelPermalink }}"></script>
@@ -36,8 +58,8 @@
       const topN = {{ $topN }};
       const data = {{ $race | jsonify | safeJS }};
 
-      window.addEventListener("DOMContentLoaded", () => {
-        racingBars.race(data, "#{{ $raceId }}", {
+      window.addEventListener("DOMContentLoaded", async () => {
+        const racer = await racingBars.race(data, "#{{ $raceId }}", {
           topN: topN,
           autorun: false,
           fillDateGapsInterval: 'month',
@@ -45,8 +67,20 @@
           valueDecimals: 0,
           controlButtons: 'all',
           colorSeed: 42,
-          injectStyles: false
+          injectStyles: false,
         });
+
+        const slider = document.querySelector('#{{ $raceId }} + div > input[type=range]');
+        const dates = racer.getAllDates();
+
+        slider.max = dates.length - 1;
+        slider.addEventListener('input', () => {
+          racer.setDate(dates[slider.value]);
+        });
+        document.addEventListener('dateChange', (e) => {
+          slider.value = dates.indexOf(e.detail.date);
+        });
+
       })
     </script>
   </div>

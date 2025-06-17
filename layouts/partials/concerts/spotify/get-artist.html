@@ -5,13 +5,13 @@
 {{ $opts := dict "headers" (dict "Authorization" (printf "Bearer %s" .spotifyToken)) }}
 {{ with try (resources.GetRemote $url $opts) }}
   {{ with .Err }}
-    {{ warnf "[Spotify] Unable to get artist info for '%s' (%s): %s" $artistName $artistData.id . }}
+    {{ warnidf "warn-spotify" "[Spotify] Unable to get artist info for '%s' (%s): %s" $artistName $artistData.id . }}
   {{ else with .Value }}
     {{ $spotifyArtist = transform.Unmarshal . }}
   {{ end }}
 {{ end }}
 {{ if and (not $spotifyArtist) $artistData.external_urls $artistData.external_urls.spotify $artistData.images (index $artistData.images 0) }}
   {{ $spotifyArtist = $artistData }}
-  {{ warnf "[Spotify] Using local artist data for '%s'" $artistName }}
+  {{ warnidf "warn-spotify" "[Spotify] Using local artist data for '%s'" $artistName }}
 {{ end }}
 {{ return $spotifyArtist }}
