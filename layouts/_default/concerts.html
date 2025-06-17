@@ -72,6 +72,9 @@
   {{ end }}
   
 </div>
+<p class="my-4 text-center text-xs text-neutral-500 dark:text-neutral-400">
+  {{ time.Format ":date_long" time.Now | dict "Date" | T "article.date_updated" }}
+</p>
 {{/*  <div class="prose mx-auto">
   <pre>{{ $data | jsonify (dict "indent" "  ") }}</pre>
   

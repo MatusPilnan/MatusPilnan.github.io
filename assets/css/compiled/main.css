@@ -2168,6 +2168,9 @@ body.zen-mode-enable {
   .text-neutral-500 {
     color: rgba(var(--color-neutral-500), 1);
   }
+  .text-neutral-600 {
+    color: rgba(var(--color-neutral-600), 1);
+  }
   .text-neutral-700 {
     color: rgba(var(--color-neutral-700), 1);
   }
