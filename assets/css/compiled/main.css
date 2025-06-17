@@ -2615,6 +2615,11 @@ body.zen-mode-enable {
       background-color: color-mix(in oklab, rgba(var(--color-neutral-300), 1) 25%, transparent);
     }
   }
+  .even\:hidden {
+    &:nth-child(even) {
+      display: none;
+    }
+  }
   .empty\:hidden {
     &:empty {
       display: none;
@@ -2905,6 +2910,13 @@ body.zen-mode-enable {
       line-height: var(--tw-leading, var(--text-lg--line-height));
     }
   }
+  .even\:sm\:block {
+    &:nth-child(even) {
+      @media (width >= 640px) {
+        display: block;
+      }
+    }
+  }
   .md\:mt-0 {
     @media (width >= 853px) {
       margin-top: calc(var(--spacing) * 0);
@@ -2973,6 +2985,13 @@ body.zen-mode-enable {
   .md\:px-24 {
     @media (width >= 853px) {
       padding-inline: calc(var(--spacing) * 24);
+    }
+  }
+  .even\:md\:block {
+    &:nth-child(even) {
+      @media (width >= 853px) {
+        display: block;
+      }
     }
   }
   .lg\:absolute {

@@ -39,9 +39,9 @@
       {{ range seq $segments }}
         {{ $dates = $dates | append (mul $increment . | duration "h" | $startDate.Add) }}
       {{ end }}
-      <div class="flex justify-evenly relative">
+      <div class="flex justify-between">
         {{ range $dates }}
-          <span class="first:absolute last:absolute first:left-0 last:right-0">
+          <span class="even:hidden even:sm:block">
             {{ .Format "01/2006" }}
           </span>
         {{ end }}
