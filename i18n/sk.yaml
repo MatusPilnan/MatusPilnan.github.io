@@ -110,4 +110,6 @@ concerts:
         city: Mesto
         location: Miesto
         event: Podujatie
+    cal-heatmap:
+      title: Kalendár
 
