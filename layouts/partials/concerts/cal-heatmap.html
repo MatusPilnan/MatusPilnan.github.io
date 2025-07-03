@@ -3,7 +3,7 @@
   <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md sm:col-span-2 lg:col-span-6">
     <p class="text-sm mb-2">{{ T "concerts.charts.cal-heatmap.title" }}</p>
 
-    <div id="cal-heatmap" class="[&_text.ch-domain-text]:text-base! overflow-auto"></div>
+    <div id="cal-heatmap" class="[&_text.ch-domain-text]:text-base! overflow-auto w-full"></div>
     <div class="flex justify-center mt-2">
       <button
         type="button"
@@ -49,25 +49,25 @@
     {{ $max := 0 }}
     {{ range $data }}
       {{ $concert := partial "concerts/parse" . }}
-      {{ $dates.Add ($concert.date.Format "2006-01-02") 1 }}
+      {{ $dates.Add ($concert.date.Format "2006-01-02") (slice $concert) }}
     {{ end }}
 
     {{ $cal := slice }}
     {{ range $k, $v := $dates.Values }}
-      {{ $cal = $cal | append (dict "date" $k "concerts" $v)}}
-      {{ if gt $v $max }}
-        {{ $max = $v }}
+      {{ $cal = $cal | append (dict "date" $k "amount" (len $v))}}
+      {{ if gt (len $v) $max }}
+        {{ $max = (len $v) }}
       {{ end }}
     {{ end }}
 
     <script>
       const concerts = {{ $cal | jsonify | safeJS }};
+      const dates = {{ $dates.Values | jsonify | safeJS }};
       const domainMax = {{ $max | safeJS }};
       const calendarContainer = document.getElementById('cal-heatmap');
 
-      const subDomainDim = Math.max((calendarContainer.getBoundingClientRect().width / 53) - 2, 15);
-
       window.addEventListener('DOMContentLoaded', () => {
+        const subDomainDim = Math.max((calendarContainer.getBoundingClientRect().width / 53) - 2, 15);
         const cal = new CalHeatmap();
 
         cal.paint({
@@ -75,7 +75,7 @@
           data: {
             source: concerts,
             x: 'date',
-            y: 'concerts',
+            y: 'amount',
             defaultValue: 0
           },
           domain: {
@@ -90,8 +90,8 @@
           subDomain : {
              type: 'day', 
              radius: 2, 
-             width: subDomainDim - 2, 
-             height: subDomainDim - 2,
+             width: subDomainDim, 
+             height: subDomainDim,
           },
           date: { start: new Date(), min: new Date('2019-01-01'), max: new Date(), locale: 'sk' },
           range: 1,
@@ -99,7 +99,7 @@
             opacity: {
               baseColor: "rgb(" + getComputedStyle(document.documentElement).getPropertyValue("--color-primary-600") + ")",
               type: 'linear',
-              domain: [-1, domainMax],
+              domain: [-0.5, domainMax],
             },
           },
           verticalOrientation: true
@@ -108,7 +108,25 @@
             { 
               enabled: true,
               text: (timestamp, value, dayjsDate) => {
-                return dayjsDate.format('LL') + ': ' + (value || '0');
+                const concerts = dates[dayjsDate.format('YYYY-MM-DD')] || []
+                let tooltip = `${dayjsDate.format('LL')}: ${value || '0'}`;
+                if (concerts.length > 0) {
+                  let list = `<ol class="mt-2 text-left list-decimal list-inside">`;
+                  let event = ''
+                  for (const c of concerts) {
+                    if (event != c.event) {
+                      if (event) {
+                        list += '</ol></li>'
+                      }
+                      list += `<li>${c.event}<ol class="pl-3 text-left list-decimal list-inside">`
+                      event = c.event;
+                    }
+                    list += `<li>${c.artist}</li>`
+                  }
+                  list += '</ol>'
+                  tooltip += list;
+                }
+                return tooltip;
               }
             }
           ]
