@@ -83,6 +83,8 @@ jobs:
           key: ${{ runner.os }}-resources
 
       - name: Build site with Hugo
+        env:
+          HUGO_PARAMS_spotify_clientSecret: ${{ secrets.HUGO_PARAMS_spotify_clientSecret }}
         run: hugo
 
       - name: Save Resources

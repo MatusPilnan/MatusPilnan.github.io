@@ -1,0 +1,25 @@
+{{ $spotifyArtist := false }}
+{{ $artist := .artist }}
+{{ $qs := printf "artist:%s" $artist.artist | dict "type" "artist" "limit" 50 "q" | querify }}
+{{ $searchUrl := printf "https://api.spotify.com/v1/search?%s" $qs }}
+{{ $opts := dict "headers" (dict "Authorization" (printf "Bearer %s" .spotifyToken)) }}
+{{ with try (resources.GetRemote $searchUrl $opts) }}
+  {{ with .Err }}
+    {{ warnidf "warn-spotify" "[Spotify] Spotify search for '%s' failed: %s" $artist.artist . }}
+  {{ else with .Value }}
+    {{ $spotifyResult := transform.Unmarshal . }}
+    {{ $spotifyArtist = index $spotifyResult.artists.items 0 }}
+
+    {{ if $spotifyArtist.name | ne $artist.artist }}
+      {{ warnidf "warn-spotify" "[Spotify] Spotify search top result is a partial match: '%s' != '%s'. Returned total %.0f items." $artist.artist $spotifyArtist.name $spotifyResult.artists.total }}
+      {{ $exact := where $spotifyResult.artists.items "name" $artist.artist }}
+      {{ if $exact }}
+        {{ $spotifyArtist = index $exact 0 }}
+        {{ warnidf "warn-spotify" "[Spotify] Found %d exact matches for '%s', using the first one: '%s'." (len $exact) $artist.artist $spotifyArtist.name }}
+      {{ else }}
+        {{ warnidf "warn-spotify" "[Spotify] No exact matches found in returned items: %s" (apply $spotifyResult.artists.items "index" "." "name" | jsonify (dict "indent" " ")) }} 
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ return $spotifyArtist }}

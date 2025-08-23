@@ -23,7 +23,6 @@
     {{ $opts := dict "delimiter" "," }}
     {{ $data = . | transform.Unmarshal $opts | after 1 }}
     {{ $data = apply $data "first" "6" "." }}
-    {{/*  {{ $data = first 200 $data }}  */}}
   {{ else }}
     {{ errorf "Unable to get remote resource %q" $url }}
   {{ end }}
@@ -68,11 +67,17 @@
 
   {{ partial "concerts/race-top-artists.html" . }}
 
+  {{ partial "concerts/cal-heatmap.html" . }}
+
   {{ partial "concerts/all.html" . }}
 
   {{ end }}
 
 </div>
+
+<p class="my-4 text-center text-xs text-neutral-500 dark:text-neutral-400">
+  {{ time.Format ":date_long" time.Now | dict "Date" | T "article.date_updated" }}
+</p>
 
 {{ with .Params.update }}
 <div class="text-center flex justify-center text-xs mt-8 text-neutral-500 dark:text-neutral-400">
@@ -81,10 +86,6 @@
   </a>
 </div>
 {{ end }}
-{{/*  <div class="prose mx-auto">
-  <pre>{{ $data | jsonify (dict "indent" "  ") }}</pre>
-  
-</div>  */}}
 
 
 

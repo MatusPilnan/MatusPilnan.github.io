@@ -1,0 +1,169 @@
+{{ $data := .data }}
+{{ with .page }}
+  <div class="min-h-full border border-neutral-200 dark:border-neutral-700 border-2 rounded overflow-hidden shadow-2xl relative p-4 backdrop-blur-md sm:col-span-2 lg:col-span-6">
+    <p class="text-sm mb-2">{{ T "concerts.charts.cal-heatmap.title" }}</p>
+
+    <div id="cal-heatmap" class="[&_text.ch-domain-text]:text-base! overflow-auto w-full"></div>
+    <div class="flex justify-center mt-2">
+      <button
+        type="button"
+        id="cal-heatmap-prev"
+        class="ml-4 inline-block rounded border-2 border-primary-600 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-primary-600 transition duration-150 ease-in-out 
+               hover:border-primary-accent-300 hover:bg-primary-900/50 hover:text-primary-accent-300 
+               focus:border-primary-600 focus:bg-primary-900/50 focus:text-primary-600 focus:outline-none focus:ring-0 
+               active:border-primary-700 active:text-primary-700 
+               motion-reduce:transition-none
+               disabled:border-neutral-500 disabled:text-neutral-500 disabled:pointer-events-none disabled:cursor-not-allowed"
+        data-twe-ripple-color="light"
+        data-twe-ripple-init
+      >
+        <
+      </button>
+      <button
+        type="button"
+        id="cal-heatmap-next"
+        class="ml-4 inline-block rounded border-2 border-primary-600 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-primary-600 transition duration-150 ease-in-out 
+               hover:border-primary-accent-300 hover:bg-primary-900/50 hover:text-primary-accent-300 
+               focus:border-primary-600 focus:bg-primary-900/50 focus:text-primary-600 focus:outline-none focus:ring-0 
+               active:border-primary-700 active:text-primary-700 
+               motion-reduce:transition-none
+               disabled:border-neutral-500 disabled:text-neutral-500 disabled:pointer-events-none disabled:cursor-not-allowed"
+        data-twe-ripple-color="light"
+        data-twe-ripple-init
+        disabled
+      >
+        >
+      </button>
+    </div>
+
+    {{ $twelementsLib := resources.Get "lib/tw-elements/index.min.js" }}
+    <script defer src="{{ $twelementsLib.RelPermalink }}" integrity="{{ $twelementsLib.Data.Integrity }}"></script>
+
+    <script defer src="https://d3js.org/d3.v7.min.js"></script>
+    <script defer src="https://unpkg.com/cal-heatmap/dist/cal-heatmap.min.js"></script>
+    <script defer src="https://unpkg.com/@popperjs/core@2"></script>
+    <script defer src="https://unpkg.com/cal-heatmap/dist/plugins/Tooltip.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css">
+
+    {{ $dates := newScratch }}
+    {{ $max := 0 }}
+    {{ range $data }}
+      {{ $concert := partial "concerts/parse" . }}
+      {{ $dates.Add ($concert.date.Format "2006-01-02") (slice $concert) }}
+    {{ end }}
+
+    {{ $cal := slice }}
+    {{ range $k, $v := $dates.Values }}
+      {{ $cal = $cal | append (dict "date" $k "amount" (len $v))}}
+      {{ if gt (len $v) $max }}
+        {{ $max = (len $v) }}
+      {{ end }}
+    {{ end }}
+
+    <script>
+      const concerts = {{ $cal | jsonify | safeJS }};
+      const dates = {{ $dates.Values | jsonify | safeJS }};
+      const domainMax = {{ $max | safeJS }};
+      const calendarContainer = document.getElementById('cal-heatmap');
+
+      window.addEventListener('DOMContentLoaded', () => {
+        const subDomainDim = Math.max((calendarContainer.getBoundingClientRect().width / 53) - 2, 15);
+        const cal = new CalHeatmap();
+
+        cal.paint({
+          itemSelector: calendarContainer,
+          data: {
+            source: concerts,
+            x: 'date',
+            y: 'amount',
+            defaultValue: 0
+          },
+          domain: {
+            sort: 'desc',
+            type: 'year',
+            label: {
+              height: 40,
+              position: 'bottom',
+              textAlign: calendarContainer.getBoundingClientRect().width > 632 ? 'middle' : 'start'
+            }
+          },
+          subDomain : {
+             type: 'day', 
+             radius: 2, 
+             width: subDomainDim, 
+             height: subDomainDim,
+          },
+          date: { start: new Date(), min: new Date('2019-01-01'), max: new Date(), locale: 'sk' },
+          range: 1,
+          scale: {
+            opacity: {
+              baseColor: "rgb(" + getComputedStyle(document.documentElement).getPropertyValue("--color-primary-600") + ")",
+              type: 'linear',
+              domain: [-0.5, domainMax],
+            },
+          },
+          verticalOrientation: true
+        }, [
+          [ Tooltip,
+            { 
+              enabled: true,
+              text: (timestamp, value, dayjsDate) => {
+                const concerts = dates[dayjsDate.format('YYYY-MM-DD')] || []
+                let tooltip = `${dayjsDate.format('LL')}: ${value || '0'}`;
+                if (concerts.length > 0) {
+                  let list = `<ol class="mt-2 text-left list-decimal list-inside">`;
+                  let event = ''
+                  for (const c of concerts) {
+                    if (event != c.event) {
+                      if (event) {
+                        list += '</ol></li>'
+                      }
+                      list += `<li>${c.event}<ol class="pl-3 text-left list-decimal list-inside">`
+                      event = c.event;
+                    }
+                    list += `<li>${c.artist}</li>`
+                  }
+                  list += '</ol>'
+                  tooltip += list;
+                }
+                return tooltip;
+              }
+            }
+          ]
+        ]);
+        const next = document.getElementById('cal-heatmap-next');
+        const prev = document.getElementById('cal-heatmap-prev');
+        next.onclick = async () => { await cal.next() }
+        prev.onclick = async () => { await cal.previous() }
+        cal.on('minDateReached', () => {
+          prev.disabled = true;
+        });
+        cal.on('maxDateReached', () => {
+          next.disabled = true;
+        });
+        cal.on('minDateNotReached', () => {
+          prev.disabled = false;
+        });
+        cal.on('maxDateNotReached', () => {
+          next.disabled = false;
+        });
+
+        window.addEventListener('resize', () => {
+          const subDomainDim = Math.max((calendarContainer.getBoundingClientRect().width / 53) - 2, 15);
+          cal.paint({
+            domain: {
+              label: {
+                textAlign: calendarContainer.getBoundingClientRect().width > 632 ? 'middle' : 'start'
+              }
+            },
+            subDomain: {
+              width: subDomainDim,
+              height: subDomainDim,
+            }
+          })
+        });
+      })
+    </script>
+
+  </div>
+{{ end }}
