@@ -72,15 +72,20 @@
   {{ partial "concerts/all.html" . }}
 
   {{ end }}
-  
+
 </div>
+
 <p class="my-4 text-center text-xs text-neutral-500 dark:text-neutral-400">
   {{ time.Format ":date_long" time.Now | dict "Date" | T "article.date_updated" }}
 </p>
-{{/*  <div class="prose mx-auto">
-  <pre>{{ $data | jsonify (dict "indent" "  ") }}</pre>
-  
-</div>  */}}
+
+{{ with .Params.update }}
+<div class="text-center flex justify-center text-xs mt-8 text-neutral-500 dark:text-neutral-400">
+  <a href="{{.}}" target="_blank" class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center">
+    Aktualizovať <span class="ml-1">{{ partial "icon.html" "link" }}</span> 
+  </a>
+</div>
+{{ end }}
 
 
 
