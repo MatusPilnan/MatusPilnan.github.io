@@ -71,8 +71,16 @@
   {{ partial "concerts/all.html" . }}
 
   {{ end }}
-  
+
 </div>
+
+{{ with .Params.update }}
+<div class="text-center flex justify-center text-xs mt-8 text-neutral-500 dark:text-neutral-400">
+  <a href="{{.}}" target="_blank" class="decoration-primary-500 hover:underline hover:decoration-2 hover:underline-offset-2 flex items-center">
+    Aktualizovať <span class="ml-1">{{ partial "icon.html" "link" }}</span> 
+  </a>
+</div>
+{{ end }}
 {{/*  <div class="prose mx-auto">
   <pre>{{ $data | jsonify (dict "indent" "  ") }}</pre>
   
