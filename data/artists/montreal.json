@@ -1,0 +1,35 @@
+{
+  "external_urls": {
+    "spotify": "https://open.spotify.com/artist/1WBgY3ppwWenEynLyKUNRk"
+  },
+  "followers": {
+    "href": null,
+    "total": 51209
+  },
+  "genres": [
+    "punk"
+  ],
+  "href": "https://api.spotify.com/v1/artists/1WBgY3ppwWenEynLyKUNRk",
+  "id": "1WBgY3ppwWenEynLyKUNRk",
+  "images": [
+    {
+      "url": "https://i.scdn.co/image/ab6761610000e5ebd43c42560399f3c0e6238945",
+      "height": 640,
+      "width": 640
+    },
+    {
+      "url": "https://i.scdn.co/image/ab67616100005174d43c42560399f3c0e6238945",
+      "height": 320,
+      "width": 320
+    },
+    {
+      "url": "https://i.scdn.co/image/ab6761610000f178d43c42560399f3c0e6238945",
+      "height": 160,
+      "width": 160
+    }
+  ],
+  "name": "Montreal",
+  "popularity": 45,
+  "type": "artist",
+  "uri": "spotify:artist:1WBgY3ppwWenEynLyKUNRk"
+}
