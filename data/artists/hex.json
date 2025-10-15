@@ -1,0 +1,33 @@
+{
+  "external_urls": {
+    "spotify": "https://open.spotify.com/artist/29UPUDL6gd7cvSMyUefoxX"
+  },
+  "followers": {
+    "href": null,
+    "total": 24572
+  },
+  "genres": [],
+  "href": "https://api.spotify.com/v1/artists/29UPUDL6gd7cvSMyUefoxX",
+  "id": "29UPUDL6gd7cvSMyUefoxX",
+  "images": [
+    {
+      "url": "https://i.scdn.co/image/ab6761610000e5ebdbd434a0e459599ae64691b4",
+      "height": 640,
+      "width": 640
+    },
+    {
+      "url": "https://i.scdn.co/image/ab67616100005174dbd434a0e459599ae64691b4",
+      "height": 320,
+      "width": 320
+    },
+    {
+      "url": "https://i.scdn.co/image/ab6761610000f178dbd434a0e459599ae64691b4",
+      "height": 160,
+      "width": 160
+    }
+  ],
+  "name": "Hex",
+  "popularity": 34,
+  "type": "artist",
+  "uri": "spotify:artist:29UPUDL6gd7cvSMyUefoxX"
+}
