@@ -17,7 +17,8 @@ Primárnym cieľom tejto zbierky písomností je teraz mať po [úspešnej SNPč
 ## Plánované glupoty:
 V plánoch sú (zhruba podľa pravdepodobnosti realizácie):
 
-- [Santa Pott 2025: bicyklom do Lübecku]({{< ref "series/santa-pott-2025" >}}) - vyrážame 3.12.2025.
+- [Východokarpatská magistrála]({{< ref "series/vychodokarpatska" >}}) - posledný májový týždeň 2026.
+- [Santa Pott ~2025~: bicyklom do Lübecku]({{< ref "series/santa-pott-2025" >}}) - ~vyrážame 3.12.2025~. Odložené na neurčito. Toto sa ukázalo ako nie jeblý nápad, ale vskutku jebnutý. Náhradný program obsahoval lyžovačku a Bergfestival v Saalbachu. 
 - ~(neoficiálna) Reprezentácia SR na Kastenlauf-e v Nemecku~ možno inokedy. nepodarilo sa zložiť družstvo
 - Triglav
 - GR11 v Pyrenejách
