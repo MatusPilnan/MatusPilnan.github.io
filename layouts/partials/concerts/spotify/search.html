@@ -1,6 +1,6 @@
 {{ $spotifyArtist := false }}
 {{ $artist := .artist }}
-{{ $qs := printf "artist:%s" $artist.artist | dict "type" "artist" "limit" 50 "q" | querify }}
+{{ $qs := printf "artist:%s" $artist.artist | dict "type" "artist" "limit" 10 "q" | querify }}
 {{ $searchUrl := printf "https://api.spotify.com/v1/search?%s" $qs }}
 {{ $opts := dict "headers" (dict "Authorization" (printf "Bearer %s" .spotifyToken)) }}
 {{ with try (resources.GetRemote $searchUrl $opts) }}
