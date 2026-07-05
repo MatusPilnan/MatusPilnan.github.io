@@ -67,7 +67,7 @@ jobs:
             path: content
 
       - name: Setup ImageMagick
-        uses: mfinelli/setup-imagemagick@v6
+        uses: mfinelli/setup-imagemagick@v8
             
       - name: Correct EXIF orientation
         run:  for filename in $(find content -name '*.jpg' -or -name '*.jpeg' -or -name '*.png'); do mogrify -auto-orient $filename; done;
