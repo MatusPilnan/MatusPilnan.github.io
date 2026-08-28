@@ -11,6 +11,13 @@
         {{ $token = index .Params 1 }}
     {{ end }}
 {{ end }}
+{{ $token = replace $token "\\_" "_" }}
+{{ $token = replace $token "\\*" "*" }}
+{{ $token = replace $token "\\[" "[" }}
+{{ $token = replace $token "\\]" "]" }}
+{{ $token = replace $token "\\(" "(" }}
+{{ $token = replace $token "\\)" ")" }}
+{{ $token = replace $token "\\#" "#" }}
 <div>
     <div class="strava-embed-placeholder" data-embed-type="activity" data-embed-id="{{ $activity }}" data-style="standard"
     data-from-embed="false" {{ with $token }} data-token="{{ . }}" {{ end }}></div>
