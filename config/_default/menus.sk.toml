@@ -78,3 +78,8 @@
   name = "Koncerty"
   pageRef = "koncerty"
   weight = 30
+
+[[footer]]
+  name = "ŠPZky"
+  url = "https://matuspilnan.github.io/SPZky/"
+  weight = 40
